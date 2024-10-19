@@ -3,6 +3,7 @@ import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { envs } from '@app/config/envs';
 import { EXAMPLE_ENTITIES } from '../example/domain/index';
+import { SECURITY_ENTITIES } from '../security/domain/index';
 
 /**
  * A module representing the database.
@@ -13,7 +14,7 @@ import { EXAMPLE_ENTITIES } from '../example/domain/index';
       name: 'main',
       type: 'postgres',
       url: envs.DATABASE_URL,
-      entities: [...EXAMPLE_ENTITIES],
+      entities: [...EXAMPLE_ENTITIES, ...SECURITY_ENTITIES],
       logging: true,
       synchronize: process.env.NODE_ENV === 'production' ? false : true,
     }),

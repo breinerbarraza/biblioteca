@@ -25,10 +25,17 @@ async function bootstrap() {
    * Create the swagger document.
    */
   const config = new DocumentBuilder()
-    .setTitle('The API')
+    .setTitle('ARI API')
     .setDescription('The API description')
     .setVersion('1.0')
-    .addBearerAuth()
+    .addBearerAuth({
+      description: `[just text field] Please enter token in following format: Bearer <JWT>`,
+      name: 'Authorization',
+      bearerFormat: 'Bearer',
+      scheme: 'Bearer',
+      type: 'http',
+      in: 'Header',
+    })
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
