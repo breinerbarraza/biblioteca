@@ -1,8 +1,10 @@
+import { UserSession } from '@app/modules/security/domain/userSession/userSession.entity';
 import { AutoMap } from '@automapper/classes';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -87,4 +89,9 @@ export class User {
   /**
    * Reaction
    */
+  /**
+   * userSession
+   */
+  @OneToMany(() => UserSession, (x) => x?.user)
+  userSession?: UserSession[];
 }

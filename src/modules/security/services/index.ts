@@ -1,13 +1,18 @@
 /* istanbul ignore file */
 import { USER_USE_CASES } from './user/index';
 import { UserProfile } from './profiles/user/user.profile';
+import { USER_SESSION_USE_CASES } from './userSession/index';
+import { UserSessionProfile } from './profiles/userSession/userSession.profile';
 
 /**
  * An array of use cases for the security module.
  */
-export const SECURITY_USE_CASES = [...USER_USE_CASES];
+export const SECURITY_USE_CASES = [
+  ...USER_USE_CASES,
+  ...USER_SESSION_USE_CASES,
+];
 
 /**
  * An array of profiles for the security module.
  */
-export const SECURITY_PROFILES = [UserProfile];
+export const SECURITY_PROFILES = [UserProfile, UserSessionProfile];
