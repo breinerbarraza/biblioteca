@@ -4,8 +4,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { UserSessionResponseDto } from '@app/modules/security/domain/userSession/dto/userSession-response.dto';
 import { UserSession } from '@app/modules/security/domain/userSession/userSession.entity';
 import { UserSessionRepository } from '@app/modules/security/infrastructure/persistence/repositories/userSession/userSession.repository';
-import { FindOneUserSession } from '@app/modules/security/services/userSession/findOneUserSession.service';
 import { UserSessionUpdateDto } from '@app/modules/security/domain/userSession/dto/userSession-update.dto';
+import { FindOneUserSession } from '@app/modules/security/services/useCases/userSession/findOneUserSession.service';
 
 /**
  * Service class for updating a userSession.
