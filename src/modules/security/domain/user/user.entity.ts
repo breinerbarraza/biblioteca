@@ -1,3 +1,5 @@
+import { LoginAttempt } from '@app/modules/security/domain/loginAttempt/loginAttempt.entity';
+import { UserRole } from '@app/modules/security/domain/userRole/userRole.entity';
 import { UserSession } from '@app/modules/security/domain/userSession/userSession.entity';
 import { AutoMap } from '@automapper/classes';
 import {
@@ -94,4 +96,16 @@ export class User {
    */
   @OneToMany(() => UserSession, (x) => x?.user)
   userSession?: UserSession[];
+
+  /**
+   * userRole
+   */
+  @OneToMany(() => UserRole, (x) => x?.user)
+  userRole?: UserRole[];
+
+  /**
+   * loginAttempts
+   */
+  @OneToMany(() => LoginAttempt, (x) => x?.user)
+  loginAttempts?: LoginAttempt[];
 }

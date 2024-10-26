@@ -11,12 +11,12 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { TransactionInterceptor } from '@app/modules/common/interceptors/transaction.interceptor';
 import { UserRequestDto } from '@app/modules/security/domain/user/dto/user-request.dto';
-import { CreateUser } from '@app/modules/security/services/user/createUser.service';
-import { FindAllUser } from '@app/modules/security/services/user/findAllUser.service';
 import { UserUpdateDto } from '@app/modules/security/domain/user/dto/user-update.dto';
-import { FindOneUser } from '@app/modules/security/services/user/findOneUser.service';
-import { UpdateUser } from '@app/modules/security/services/user/updateUser.service';
-import { DeleteUser } from '@app/modules/security/services/user/deleteUser.service';
+import { CreateUser } from '@app/modules/security/services/useCases/user/createUser.service';
+import { FindAllUser } from '@app/modules/security/services/useCases/user/findAllUser.service';
+import { FindOneUser } from '@app/modules/security/services/useCases/user/findOneUser.service';
+import { UpdateUser } from '@app/modules/security/services/useCases/user/updateUser.service';
+import { DeleteUser } from '@app/modules/security/services/useCases/user/deleteUser.service';
 
 /**
  * User controller

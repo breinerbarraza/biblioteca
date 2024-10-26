@@ -11,12 +11,12 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { TransactionInterceptor } from '@app/modules/common/interceptors/transaction.interceptor';
 import { UserSessionRequestDto } from '@app/modules/security/domain/userSession/dto/userSession-request.dto';
-import { CreateUserSession } from '@app/modules/security/services/userSession/createUserSession.service';
-import { FindAllUserSession } from '@app/modules/security/services/userSession/findAllUserSession.service';
 import { UserSessionUpdateDto } from '@app/modules/security/domain/userSession/dto/userSession-update.dto';
-import { FindOneUserSession } from '@app/modules/security/services/userSession/findOneUserSession.service';
-import { UpdateUserSession } from '@app/modules/security/services/userSession/updateUserSession.service';
-import { DeleteUserSession } from '@app/modules/security/services/userSession/deleteUserSession.service';
+import { CreateUserSession } from '@app/modules/security/services/useCases/userSession/createUserSession.service';
+import { FindAllUserSession } from '@app/modules/security/services/useCases/userSession/findAllUserSession.service';
+import { FindOneUserSession } from '@app/modules/security/services/useCases/userSession/findOneUserSession.service';
+import { UpdateUserSession } from '@app/modules/security/services/useCases/userSession/updateUserSession.service';
+import { DeleteUserSession } from '@app/modules/security/services/useCases/userSession/deleteUserSession.service';
 
 /**
  * UserSession controller

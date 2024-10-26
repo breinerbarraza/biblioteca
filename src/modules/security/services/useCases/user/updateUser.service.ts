@@ -4,8 +4,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { UserResponseDto } from '@app/modules/security/domain/user/dto/user-response.dto';
 import { User } from '@app/modules/security/domain/user/user.entity';
 import { UserRepository } from '@app/modules/security/infrastructure/persistence/repositories/user/user.repository';
-import { FindOneUser } from '@app/modules/security/services/user/findOneUser.service';
 import { UserUpdateDto } from '@app/modules/security/domain/user/dto/user-update.dto';
+import { FindOneUser } from '@app/modules/security/services/useCases/user/findOneUser.service';
 
 /**
  * Service class for updating a user.
