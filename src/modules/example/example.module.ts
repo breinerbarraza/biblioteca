@@ -15,4 +15,4 @@ import { EXAMPLE_PROFILES, EXAMPLE_USE_CASES } from './services';
     ...EXAMPLE_USE_CASES,
   ],
 })
-export class ExampleModule {}
+export class AdministrationModule {}

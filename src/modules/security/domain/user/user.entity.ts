@@ -1,3 +1,4 @@
+import { Person } from '@app/modules/administration/domain/person/person.entity';
 import { LoginAttempt } from '@app/modules/security/domain/loginAttempt/loginAttempt.entity';
 import { UserRole } from '@app/modules/security/domain/userRole/userRole.entity';
 import { UserSession } from '@app/modules/security/domain/userSession/userSession.entity';
@@ -108,4 +109,10 @@ export class User {
    */
   @OneToMany(() => LoginAttempt, (x) => x?.user)
   loginAttempts?: LoginAttempt[];
+
+  /**
+   * persons
+   */
+  @OneToMany(() => Person, (x) => x?.user)
+  persons?: Person[];
 }

@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import { TODO_USE_CASES } from './todo/index';
+import { TODO_USE_CASES } from './useCases/todo';
 import { TodoProfile } from './profiles/todo/todo.profile';
 
 /**
