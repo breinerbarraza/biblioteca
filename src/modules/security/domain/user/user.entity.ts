@@ -51,7 +51,6 @@ export class User {
    */
   @Column({
     type: 'varchar',
-    length: 20,
   })
   @AutoMap()
   password: string;
