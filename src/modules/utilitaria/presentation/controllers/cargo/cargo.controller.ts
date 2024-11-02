@@ -1,5 +1,5 @@
-import { FindAllCargo } from '@app/modules/utilitaria/services/cargo/findAllCargo.service';
-import { FindOneCargo } from '@app/modules/utilitaria/services/cargo/findOneCargo.service';
+import { FindAllCargo } from '@app/modules/utilitaria/services/useCases/cargo/findAllCargo.service';
+import { FindOneCargo } from '@app/modules/utilitaria/services/useCases/cargo/findOneCargo.service';
 import { Controller, Get, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 

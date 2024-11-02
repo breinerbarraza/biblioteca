@@ -1,5 +1,6 @@
+import { Person } from '@app/modules/administration/domain/person/person.entity';
 import { AutoMap } from '@automapper/classes';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
  * A class representing a cargo entity.
@@ -34,4 +35,12 @@ export class Cargo {
   })
   @AutoMap()
   description: string;
+
+  // Relation
+
+  /**
+   * persons
+   */
+  @OneToMany(() => Person, (person) => person.cargo)
+  persons?: Person[];
 }

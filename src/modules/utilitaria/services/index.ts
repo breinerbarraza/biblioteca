@@ -1,7 +1,7 @@
 /* istanbul ignore file */
-import { CARGO_USE_CASES } from './cargo/index';
 import { CargoProfile } from './profiles/cargo/cargo.profile';
-import { IDENTIFICATION_TYPE_USE_CASES } from './identificationType/index';
+import { CARGO_USE_CASES } from './useCases/cargo';
+import { IDENTIFICATION_TYPE_USE_CASES } from './useCases/identificationType';
 
 /**
  * An array of use cases for the example module.
