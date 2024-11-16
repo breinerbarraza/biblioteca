@@ -3,7 +3,7 @@ import { LoginResponseDto } from '@app/modules/security/domain/login/login-respo
 import { UserRepository } from '@app/modules/security/infrastructure/persistence/repositories/user/user.repository';
 import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 
@@ -32,12 +32,12 @@ export class LoginUser {
     });
 
     if (!exit) {
-      throw new UnauthorizedException(null, 'Email o contraseña incorrecta');
+      throw new NotFoundException('Email o contraseña incorrecta.');
     }
 
     const password = bcrypt.compareSync(loginRequest?.password, exit?.password);
     if (!password) {
-      throw new UnauthorizedException(null, 'Email o contraseña incorrecta');
+      throw new NotFoundException('Email o contraseña incorrecta.');
     }
 
     const payload = {

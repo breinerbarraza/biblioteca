@@ -4,21 +4,21 @@ import { AutoMap } from '@automapper/classes';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
- * A class representing a identificationType entity.
+ * A class representing a State entity.
  */
 @Entity({
-  name: 'identificationTypes',
+  name: 'states',
 })
-export class IdentificationType {
+export class State {
   /**
-   * IdentificationType id
+   * State id
    */
   @PrimaryGeneratedColumn()
   @AutoMap()
   id: number;
 
   /**
-   * IdentificationType name
+   * State name
    */
   @Column({
     type: 'varchar',
@@ -28,36 +28,26 @@ export class IdentificationType {
   name: string;
 
   /**
-   * IdentificationType acronym
+   * State description
    */
   @Column({
     type: 'varchar',
-    length: 4,
+    length: 50,
   })
   @AutoMap()
-  acronym: string;
-
-  /**
-   * IdentificationType code
-   */
-  @Column({
-    type: 'varchar',
-    length: 10,
-  })
-  @AutoMap()
-  code: string;
+  description: string;
 
   // Relation
 
   /**
    * persons
    */
-  @OneToMany(() => Person, (person) => person.identificationType)
+  @OneToMany(() => Person, (person) => person.state)
   persons?: Person[];
 
   /**
-   * companies
+   * company
    */
-  @OneToMany(() => Company, (person) => person.identificationType)
+  @OneToMany(() => Company, (person) => person.state)
   companies?: Company[];
 }

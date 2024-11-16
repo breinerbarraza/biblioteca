@@ -3,81 +3,81 @@ import { AutoMap } from '@automapper/classes';
 /**
  * A class representing a person response dto.
  */
-export class PersonResponseDto {
+export class CompanyResponseDto {
   /**
-   * Person id
+   * Company id
    */
   @AutoMap()
   id: number;
 
   /**
-   * Person idIdentificationType
+   * Company idIdentificationType
    */
   @AutoMap()
   idIdentificationType: number;
   /**
-   * Person idCargo
+   * Company idState
    */
   @AutoMap()
-  idCargo: number;
+  idState: number;
 
   /**
-   * Person idUser
+   * Company dv
    */
   @AutoMap()
-  idUser: number;
+  dv: string;
 
   /**
-   * Person documentNumber
+   * Company business_name
    */
   @AutoMap()
-  documentNumber: string;
+  business_name: string;
 
   /**
-   * Person name
+   * Company Name
    */
   @AutoMap()
-  name: string;
+  Name: string;
 
   /**
-   * Person middleName
+   * Company middleName
    */
   @AutoMap()
   middleName: string;
 
   /**
-   * Person firstSurname
+   * Company firstSurname
    */
   @AutoMap()
   firstSurname: string;
 
   /**
-   * Person secondSurname
+   * Company secondSurname
    */
   @AutoMap()
   secondSurname: string;
 
   /**
-   * Person fullName
+   * Company fullName
    */
   @AutoMap()
   fullName: string;
 
   /**
-   * Person dateBirth
-   */
-  @AutoMap()
-  dateBirth: Date;
-
-  /**
-   * Person phone
+   * Company phone
    */
   @AutoMap()
   phone: string;
 
   /**
-   * Person email
+   * Company email
    */
   @AutoMap()
   email: string;
+
+  /**
+   * Company email
+   */
+  @AutoMap()
+  fullAddress: string;
 }

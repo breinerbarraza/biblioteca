@@ -1,53 +1,46 @@
 import { AutoMap } from '@automapper/classes';
-import {
-  IsDateString,
-  IsEmail,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsEmail, IsNumber, IsOptional, IsString } from 'class-validator';
 
 /**
- * A class representing a person request dto.
+ * A class representing a company request dto.
  */
-export class PersonRequestDto {
+export class CompanyRequestDto {
   /**
-   * Person idIdentificationType
+   * Company idIdentificationType
    */
   @IsNumber()
   @AutoMap()
   idIdentificationType: number;
-
   /**
-   * Person idCargo
+   * Company idState
    */
   @IsNumber()
   @AutoMap()
-  idCargo: number;
+  idState: number;
 
   /**
-   * Person idUser
-   */
-  @IsNumber()
-  @AutoMap()
-  idUser: number;
-
-  /**
-   * Person documentNumber
+   * Company dv
    */
   @IsString()
   @AutoMap()
-  documentNumber: string;
+  dv: string;
 
   /**
-   * Person name
+   * Company business_name
+   */
+  @IsString()
+  @AutoMap()
+  business_name: string;
+
+  /**
+   * Company name
    */
   @IsString()
   @AutoMap()
   name: string;
 
   /**
-   * Person middleName
+   * Company middleName
    */
   @IsString()
   @IsOptional()
@@ -55,14 +48,14 @@ export class PersonRequestDto {
   middleName: string;
 
   /**
-   * Person firstSurname
+   * Company firstSurname
    */
   @IsString()
   @AutoMap()
   firstSurname: string;
 
   /**
-   * Person secondSurname
+   * Company secondSurname
    */
   @IsString()
   @IsOptional()
@@ -70,7 +63,7 @@ export class PersonRequestDto {
   secondSurname: string;
 
   /**
-   * Person fullName
+   * Company fullName
    */
   @IsString()
   @IsOptional()
@@ -78,24 +71,24 @@ export class PersonRequestDto {
   fullName: string;
 
   /**
-   * Person dateBirth
-   */
-  @IsDateString()
-  @AutoMap()
-  dateBirth: Date;
-
-  /**
-   * Person phone
+   * Company phone
    */
   @IsString()
   @AutoMap()
   phone: string;
 
   /**
-   * Person email
+   * Company email
    */
   @IsString()
   @IsEmail()
   @AutoMap()
   email: string;
+
+  /**
+   * Company email
+   */
+  @IsString()
+  @AutoMap()
+  fullAddress: string;
 }
