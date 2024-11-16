@@ -1,5 +1,3 @@
-import { User } from '@app/modules/security/domain/user/user.entity';
-import { Cargo } from '@app/modules/utilitaria/domain/cargo/cargo.entity';
 import { IdentificationType } from '@app/modules/utilitaria/domain/identificationType/identificationType.entity';
 import { State } from '@app/modules/utilitaria/domain/state/state.entity';
 import { AutoMap } from '@automapper/classes';
@@ -12,80 +10,78 @@ import {
 } from 'typeorm';
 
 /**
- * A class representing a person entity.
+ * A class representing a company entity.
  */
 @Entity({
-  name: 'persons',
+  name: 'companies',
 })
-export class Person {
+export class Company {
   /**
-   * Person id
+   * Company id
    */
   @PrimaryGeneratedColumn()
   @AutoMap()
   id: number;
 
   /**
-   * Person idState
+   * Company idState
    */
   @Column()
   @AutoMap()
   idState: number;
 
   /**
-   * Person idIdentificationType
+   * Company idIdentificationType
    */
   @Column()
   @AutoMap()
   idIdentificationType: number;
 
   /**
-   * Person idCargo
-   */
-  @Column()
-  @AutoMap()
-  idCargo: number;
-
-  /**
-   * Person idUser
-   */
-  @Column()
-  @AutoMap()
-  idUser: number;
-
-  /**
-   * Person documentNumber
+   * Company dv
    */
   @Column({
     type: 'varchar',
-    length: 11,
+    length: 1,
   })
   @AutoMap()
-  documentNumber: string;
+  dv: string;
 
   /**
-   * Person name
+   * Company business_name
    */
   @Column({
     type: 'varchar',
-    length: 20,
+    length: 50,
+    nullable: true,
+  })
+  @AutoMap()
+  business_name: string;
+
+  /**
+   * Company name
+   */
+  @Column({
+    type: 'varchar',
+    length: 50,
+    nullable: true,
   })
   @AutoMap()
   name: string;
 
   /**
-   * Person middleName
+   * Company middleName
    */
   @Column({
     type: 'varchar',
-    length: 20,
+    length: 50,
     nullable: true,
   })
   @AutoMap()
   middleName: string;
 
   /**
-   * Person firstSurname
+   * Company firstSurname
    */
   @Column({
     type: 'varchar',
@@ -95,12 +91,11 @@ export class Person {
   firstSurname: string;
 
   /**
-   * Person secondSurname
+   * Company secondSurname
    */
   @Column({
     type: 'varchar',
     length: 20,
-    nullable: true,
   })
   @AutoMap()
   secondSurname: string;
@@ -116,16 +111,17 @@ export class Person {
   fullName: string;
 
   /**
-   * Person dateBirth
+   * Company email
    */
   @Column({
-    type: 'date',
+    type: 'varchar',
+    length: 50,
   })
   @AutoMap()
-  dateBirth: Date;
+  email: string;
 
   /**
-   * Person phone
+   * Company phone
    */
   @Column({
     type: 'varchar',
@@ -135,21 +131,20 @@ export class Person {
   phone: string;
 
   /**
-   * Person email
+   * Company fullAddress
    */
   @Column({
     type: 'varchar',
-    length: 50,
   })
   @AutoMap()
-  email: string;
+  fullAddress: string;
 
   // Relations
 
   /**
    * state
    */
-  @ManyToOne(() => State, (x) => x.persons)
+  @ManyToOne(() => State, (x) => x.companies)
   @JoinColumn({
     name: 'idState',
   })
@@ -158,27 +153,9 @@ export class Person {
   /**
    * identificationType
    */
-  @ManyToOne(() => IdentificationType, (x) => x.persons)
+  @ManyToOne(() => IdentificationType, (x) => x.companies)
   @JoinColumn({
     name: 'idIdentificationType',
   })
   identificationType?: IdentificationType;
-
-  /**
-   * cargo
-   */
-  @ManyToOne(() => Cargo, (x) => x.persons)
-  @JoinColumn({
-    name: 'idCargo',
-  })
-  cargo?: Cargo;
-
-  /**
-   * user
-   */
-  @ManyToOne(() => User, (x) => x.persons)
-  @JoinColumn({
-    name: 'idUser',
-  })
-  user?: User;
 }

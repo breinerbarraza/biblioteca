@@ -1,3 +1,4 @@
+import { Company } from '@app/modules/administration/domain/company/company.entity';
 import { Person } from '@app/modules/administration/domain/person/person.entity';
 import { AbstractRepository } from '@app/modules/database/classes/abstractRepository';
 import { GenericRepository } from '@app/modules/database/classes/genericRepository';
@@ -11,6 +12,7 @@ import { DataSource } from 'typeorm';
 export class AdministrationContext {
   todo: AbstractRepository<Todo>;
   person: AbstractRepository<Person>;
+  company: AbstractRepository<Company>;
 
   constructor(
     @InjectDataSource('main') private readonly dataSource: DataSource,
@@ -23,6 +25,11 @@ export class AdministrationContext {
     );
     this.person = new GenericRepository<Person>(
       Person,
+      this.dataSource,
+      this.request,
+    );
+    this.company = new GenericRepository<Company>(
+      Company,
       this.dataSource,
       this.request,
     );

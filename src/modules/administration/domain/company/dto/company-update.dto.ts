@@ -1,57 +1,43 @@
 import { AutoMap } from '@automapper/classes';
-import {
-  IsNumber,
-  IsOptional,
-  IsString,
-  IsDateString,
-  IsEmail,
-} from 'class-validator';
+import { IsEmail, IsNumber, IsOptional, IsString } from 'class-validator';
 
 /**
  * A class representing a todo update dto.
  */
-export class PersonUpdateDto {
+export class CompanyUpdateDto {
   /**
-   * Person id
-   */
-  @IsNumber()
-  @IsOptional()
-  @AutoMap()
-  id: number;
-
-  /**
-   * Person idIdentificationType
+   * Company idIdentificationType
    */
   @IsNumber()
   @IsOptional()
   @AutoMap()
   idIdentificationType: number;
   /**
-   * Person idCargo
+   * Company idState
    */
   @IsNumber()
   @IsOptional()
   @AutoMap()
-  idCargo: number;
+  idState: number;
 
   /**
-   * Person idUser
-   */
-  @IsNumber()
-  @IsOptional()
-  @AutoMap()
-  idUser: number;
-
-  /**
-   * Person documentNumber
+   * Company dv
    */
   @IsString()
   @IsOptional()
   @AutoMap()
-  documentNumber: string;
+  dv: string;
 
   /**
-   * Person name
+   * Company business_name
+   */
+  @IsString()
+  @IsOptional()
+  @AutoMap()
+  business_name: string;
+
+  /**
+   * Company name
    */
   @IsString()
   @IsOptional()
@@ -59,7 +45,7 @@ export class PersonUpdateDto {
   name: string;
 
   /**
-   * Person middleName
+   * Company middleName
    */
   @IsString()
   @IsOptional()
@@ -67,7 +53,7 @@ export class PersonUpdateDto {
   middleName: string;
 
   /**
-   * Person firstSurname
+   * Company firstSurname
    */
   @IsString()
   @IsOptional()
@@ -75,7 +61,7 @@ export class PersonUpdateDto {
   firstSurname: string;
 
   /**
-   * Person secondSurname
+   * Company secondSurname
    */
   @IsString()
   @IsOptional()
@@ -83,7 +69,7 @@ export class PersonUpdateDto {
   secondSurname: string;
 
   /**
-   * Person fullName
+   * Company fullName
    */
   @IsString()
   @IsOptional()
@@ -91,27 +77,25 @@ export class PersonUpdateDto {
   fullName: string;
 
   /**
-   * Person dateBirth
-   */
-  @IsDateString()
-  @IsOptional()
-  @AutoMap()
-  dateBirth: Date;
-
-  /**
-   * Person phone
+   * Company phone
    */
   @IsString()
-  @IsOptional()
   @AutoMap()
   phone: string;
 
   /**
-   * Person email
+   * Company email
    */
   @IsString()
   @IsEmail()
-  @IsOptional()
   @AutoMap()
   email: string;
+
+  /**
+   * Company email
+   */
+  @IsString()
+  @IsOptional()
+  @AutoMap()
+  fullAddress: string;
 }
