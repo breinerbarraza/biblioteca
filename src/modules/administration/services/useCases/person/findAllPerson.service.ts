@@ -25,7 +25,9 @@ export class FindAllPerson {
    * @returns A promise that resolves to an array of PersonResponseDto objects.
    */
   async handle(): Promise<PersonResponseDto[]> {
-    const persons = await this._personRepository.getAll();
+    const persons = await this._personRepository.getAll({
+      relations:['state','identificationType','cargo','user']
+    });
 
     const response = this._mapper.mapArray(persons, Person, PersonResponseDto);
 

@@ -23,7 +23,7 @@ import { ADMINISTRATION_ENTITIES } from '../administration/domain/index';
         ...ADMINISTRATION_ENTITIES,
       ],
       logging: true,
-      synchronize: process.env.NODE_ENV === 'production' ? false : true,
+      // synchronize: process.env.NODE_ENV === 'production' ? false : true,
     }),
   ],
 })

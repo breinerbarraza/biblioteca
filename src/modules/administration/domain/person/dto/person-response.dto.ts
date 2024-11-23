@@ -1,4 +1,9 @@
+import { UserResponseDto } from '@app/modules/security/domain/user/dto/user-response.dto';
+import { CargoResponseDto } from '@app/modules/utilitaria/domain/cargo/dto/cargo-response.dto';
+import { IdentificationTypeResponseDto } from '@app/modules/utilitaria/domain/identificationType/dto/identificationType-response.dto';
+import { StateResponseDto } from '@app/modules/utilitaria/domain/state/dto/state-response.dto';
 import { AutoMap } from '@automapper/classes';
+import { ApiProperty } from '@nestjs/swagger';
 
 /**
  * A class representing a person response dto.
@@ -9,23 +14,6 @@ export class PersonResponseDto {
    */
   @AutoMap()
   id: number;
-
-  /**
-   * Person idIdentificationType
-   */
-  @AutoMap()
-  idIdentificationType: number;
-  /**
-   * Person idCargo
-   */
-  @AutoMap()
-  idCargo: number;
-
-  /**
-   * Person idUser
-   */
-  @AutoMap()
-  idUser: number;
 
   /**
    * Person documentNumber
@@ -80,4 +68,20 @@ export class PersonResponseDto {
    */
   @AutoMap()
   email: string;
+
+  @ApiProperty({ type: () => StateResponseDto })
+  @AutoMap(() => StateResponseDto)
+  state: StateResponseDto;
+
+  @ApiProperty({ type: () => IdentificationTypeResponseDto })
+  @AutoMap(() => IdentificationTypeResponseDto)
+  identificationType: IdentificationTypeResponseDto;
+
+  @ApiProperty({ type: () => CargoResponseDto })
+  @AutoMap(() => CargoResponseDto)
+  cargo: CargoResponseDto;
+
+  @ApiProperty({ type: () => UserResponseDto })
+  @AutoMap(() => UserResponseDto)
+  user: UserResponseDto;
 }
