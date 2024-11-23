@@ -12,6 +12,7 @@ export class CompanyUpdateDto {
   @IsOptional()
   @AutoMap()
   idIdentificationType: number;
+
   /**
    * Company idState
    */
@@ -19,6 +20,14 @@ export class CompanyUpdateDto {
   @IsOptional()
   @AutoMap()
   idState: number;
+
+  /**
+   * Company identificationNumber
+   */
+  @IsNumber()
+  @IsOptional()
+  @AutoMap()
+  identificationNumber: number;
 
   /**
    * Company dv

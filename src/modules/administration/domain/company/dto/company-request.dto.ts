@@ -11,12 +11,20 @@ export class CompanyRequestDto {
   @IsNumber()
   @AutoMap()
   idIdentificationType: number;
+
   /**
    * Company idState
    */
   @IsNumber()
   @AutoMap()
   idState: number;
+
+  /**
+   * Company identificationNumber
+   */
+  @IsNumber()
+  @AutoMap()
+  identificationNumber: number;
 
   /**
    * Company dv
@@ -29,6 +37,7 @@ export class CompanyRequestDto {
    * Company business_name
    */
   @IsString()
+  @IsOptional()
   @AutoMap()
   business_name: string;
 
@@ -36,6 +45,7 @@ export class CompanyRequestDto {
    * Company name
    */
   @IsString()
+  @IsOptional()
   @AutoMap()
   name: string;
 
@@ -51,6 +61,7 @@ export class CompanyRequestDto {
    * Company firstSurname
    */
   @IsString()
+  @IsOptional()
   @AutoMap()
   firstSurname: string;
 
