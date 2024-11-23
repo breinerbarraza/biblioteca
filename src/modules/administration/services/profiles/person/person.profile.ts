@@ -36,29 +36,27 @@ export class PersonProfile extends AutomapperProfile {
     return (mapper) => {
       createMap(mapper, Person, PersonResponseDto,
         forMember(
-          (dest) => dest.identificationType,
-          mapFrom((src) =>
-            mapper.map(src.idIdentificationType, IdentificationType, IdentificationTypeResponseDto, { depth: 1 }),
-          ),
+          (destination) => destination?.identificationType,
+          mapFrom((source) => source?.identificationType),
         ),
-        forMember(
-          (dest) => dest.state,
-          mapFrom((src) =>
-            mapper.map(src.state, State, StateResponseDto, { depth: 1 }),
-          ),
-        ),
-        forMember(
-          (dest) => dest.cargo,
-          mapFrom((src) =>
-            mapper.map(src.cargo, Cargo, CargoResponseDto, { depth: 1 }),
-          ),
-        ),
-        forMember(
-          (dest) => dest.user,
-          mapFrom((src) =>
-            mapper.map(src.user, User, UserResponseDto, { depth: 1 }),
-          ),
-        ),
+        // forMember(
+        //   (dest) => dest.state,
+        //   mapFrom((src) =>
+        //     mapper.map(src.state, State, StateResponseDto, { depth: 1 }),
+        //   ),
+        // ),
+        // forMember(
+        //   (dest) => dest.cargo,
+        //   mapFrom((src) =>
+        //     mapper.map(src.cargo, Cargo, CargoResponseDto, { depth: 1 }),
+        //   ),
+        // ),
+        // forMember(
+        //   (dest) => dest.user,
+        //   mapFrom((src) =>
+        //     mapper.map(src.user, User, UserResponseDto, { depth: 1 }),
+        //   ),
+        // ),
       );
       createMap(mapper, PersonRequestDto, Person);
       createMap(mapper, PersonUpdateDto, Person);

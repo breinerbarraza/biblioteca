@@ -28,7 +28,7 @@ export class Person {
   /**
    * Person idState
    */
-  @Column()
+  @Column({ default: 1 })
   @AutoMap()
   idState: number;
 
@@ -149,7 +149,7 @@ export class Person {
   /**
    * state
    */
-  @ManyToOne(() => State, (x) => x.persons)
+  @ManyToOne(() => State, (x) => x.persons )
   @JoinColumn({
     name: 'idState',
   })
