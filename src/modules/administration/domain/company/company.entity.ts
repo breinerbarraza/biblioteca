@@ -38,6 +38,13 @@ export class Company {
   idIdentificationType: number;
 
   /**
+   * Company identificationNumber
+   */
+  @Column()
+  @AutoMap()
+  identificationNumber: number;
+
+  /**
    * Company dv
    */
   @Column({
@@ -86,6 +93,7 @@ export class Company {
   @Column({
     type: 'varchar',
     length: 20,
+    nullable: true,
   })
   @AutoMap()
   firstSurname: string;
@@ -96,6 +104,7 @@ export class Company {
   @Column({
     type: 'varchar',
     length: 20,
+    nullable: true,
   })
   @AutoMap()
   secondSurname: string;

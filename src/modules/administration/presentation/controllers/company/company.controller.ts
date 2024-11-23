@@ -21,7 +21,7 @@ import { DeleteCompany } from '@app/modules/administration/services/useCases/com
 /**
  * Company controller
  */
-@Controller('companys')
+@Controller('companies')
 @ApiTags('Companies')
 export class CompanyController {
   constructor(

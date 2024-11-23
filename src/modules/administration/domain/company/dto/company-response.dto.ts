@@ -15,11 +15,18 @@ export class CompanyResponseDto {
    */
   @AutoMap()
   idIdentificationType: number;
+
   /**
    * Company idState
    */
   @AutoMap()
   idState: number;
+
+  /**
+   * Company identificationNumber
+   */
+  @AutoMap()
+  identificationNumber: number;
 
   /**
    * Company dv

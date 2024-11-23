@@ -21,6 +21,7 @@ export class UserRequestDto {
    * User email
    */
   @IsString()
+  @IsEmail()
   @AutoMap()
   email: string;
 
@@ -28,7 +29,6 @@ export class UserRequestDto {
    * User password
    */
   @IsString()
-  @IsEmail()
   @AutoMap()
   password: string;
 
