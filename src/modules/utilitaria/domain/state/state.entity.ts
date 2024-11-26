@@ -1,5 +1,4 @@
 import { Company } from '@app/modules/administration/domain/company/company.entity';
-import { Person } from '@app/modules/administration/domain/person/person.entity';
 import { AutoMap } from '@automapper/classes';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -38,12 +37,6 @@ export class State {
   description: string;
 
   // Relation
-
-  /**
-   * persons
-   */
-  @OneToMany(() => Person, (person) => person.state)
-  persons?: Person[];
 
   /**
    * company
