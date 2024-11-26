@@ -25,8 +25,6 @@ export class LoginUser {
    */
 
   async handle(loginRequest: LoginRequestDto): Promise<LoginResponseDto> {
-    console.log(loginRequest);
-
     const exit = await this._userRepository.findBy({
       where: [{ email: loginRequest.email }],
     });

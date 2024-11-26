@@ -28,5 +28,10 @@ export class UtilitariaContext {
       this.dataSource,
       this.request,
     );
+    this.identificationType = new GenericRepository<IdentificationType>(
+      IdentificationType,
+      this.dataSource,
+      this.request,
+    );
   }
 }
