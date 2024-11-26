@@ -6,8 +6,10 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { CompanyPerson } from '../companyPerson/companyPerson.entity';
 
 /**
  * A class representing a company entity.
@@ -167,4 +169,10 @@ export class Company {
     name: 'idIdentificationType',
   })
   identificationType?: IdentificationType;
+
+  /**
+   * companyPerson
+   */
+  @OneToMany(() => CompanyPerson, (companyPerson) => companyPerson.company)
+  companyPerson?: CompanyPerson[];
 }

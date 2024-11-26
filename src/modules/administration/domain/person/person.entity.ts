@@ -8,8 +8,10 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { CompanyPerson } from '../companyPerson/companyPerson.entity';
 
 /**
  * A class representing a person entity.
@@ -181,4 +183,10 @@ export class Person {
     name: 'idUser',
   })
   user?: User;
+
+  /**
+   * companyPerson
+   */
+  @OneToMany(() => CompanyPerson, (companyPerson) => companyPerson.person)
+  companyPerson?: CompanyPerson[];
 }
