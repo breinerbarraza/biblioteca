@@ -51,12 +51,12 @@ export class PersonUpdateDto {
   documentNumber: string;
 
   /**
-   * Person name
+   * Person firstName
    */
   @IsString()
   @IsOptional()
   @AutoMap()
-  name: string;
+  firstName: string;
 
   /**
    * Person middleName
@@ -67,20 +67,20 @@ export class PersonUpdateDto {
   middleName: string;
 
   /**
-   * Person firstSurname
+   * Person firstLastName
    */
   @IsString()
   @IsOptional()
   @AutoMap()
-  firstSurname: string;
+  firstLastName: string;
 
   /**
-   * Person secondSurname
+   * Person middleLastName
    */
   @IsString()
   @IsOptional()
   @AutoMap()
-  secondSurname: string;
+  middleLastName: string;
 
   /**
    * Person fullName

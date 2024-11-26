@@ -1,3 +1,4 @@
+import { PersonRequestDto } from '@app/modules/administration/domain/person/dto/person-request.dto';
 import { AutoMap } from '@automapper/classes';
 import {
   IsBoolean,
@@ -9,7 +10,7 @@ import {
 /**
  * A class representing a user request dto.
  */
-export class UserRequestDto {
+export class UserRequestDto extends PersonRequestDto {
   /**
    * User userName
    */
@@ -47,4 +48,12 @@ export class UserRequestDto {
   @IsOptional()
   @AutoMap()
   failedAttempts: number;
+
+  /**
+   * User idCompany
+   */
+  @IsNumber()
+  @IsOptional()
+  @AutoMap()
+  idCompany?: number;
 }

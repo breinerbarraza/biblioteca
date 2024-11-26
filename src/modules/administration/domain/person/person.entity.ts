@@ -1,7 +1,6 @@
 import { User } from '@app/modules/security/domain/user/user.entity';
 import { Cargo } from '@app/modules/utilitaria/domain/cargo/cargo.entity';
 import { IdentificationType } from '@app/modules/utilitaria/domain/identificationType/identificationType.entity';
-import { State } from '@app/modules/utilitaria/domain/state/state.entity';
 import { AutoMap } from '@automapper/classes';
 import {
   Column,
@@ -26,13 +25,6 @@ export class Person {
   @PrimaryGeneratedColumn()
   @AutoMap()
   id: number;
-
-  /**
-   * Person idState
-   */
-  @Column()
-  @AutoMap()
-  idState: number;
 
   /**
    * Person idIdentificationType
@@ -66,14 +58,14 @@ export class Person {
   documentNumber: string;
 
   /**
-   * Person name
+   * Person firstName
    */
   @Column({
     type: 'varchar',
     length: 20,
   })
   @AutoMap()
-  name: string;
+  firstName: string;
 
   /**
    * Person middleName
@@ -87,17 +79,17 @@ export class Person {
   middleName: string;
 
   /**
-   * Person firstSurname
+   * Person firstLastName
    */
   @Column({
     type: 'varchar',
     length: 20,
   })
   @AutoMap()
-  firstSurname: string;
+  firstLastName: string;
 
   /**
-   * Person secondSurname
+   * Person middleLastName
    */
   @Column({
     type: 'varchar',
@@ -105,7 +97,7 @@ export class Person {
     nullable: true,
   })
   @AutoMap()
-  secondSurname: string;
+  middleLastName: string;
 
   /**
    * Company fullName
@@ -146,16 +138,17 @@ export class Person {
   @AutoMap()
   email: string;
 
-  // Relations
-
   /**
-   * state
+   * User state
    */
-  @ManyToOne(() => State, (x) => x.persons)
-  @JoinColumn({
-    name: 'idState',
+  @Column({
+    type: 'bool',
+    default: true,
   })
-  state?: State;
+  @AutoMap()
+  state: boolean;
+
+  // Relations
 
   /**
    * identificationType

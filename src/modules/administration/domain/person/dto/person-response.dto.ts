@@ -34,10 +34,10 @@ export class PersonResponseDto {
   documentNumber: string;
 
   /**
-   * Person name
+   * Person firstName
    */
   @AutoMap()
-  name: string;
+  firstName: string;
 
   /**
    * Person middleName
@@ -46,16 +46,16 @@ export class PersonResponseDto {
   middleName: string;
 
   /**
-   * Person firstSurname
+   * Person firstLastName
    */
   @AutoMap()
-  firstSurname: string;
+  firstLastName: string;
 
   /**
-   * Person secondSurname
+   * Person middleLastName
    */
   @AutoMap()
-  secondSurname: string;
+  middleLastName: string;
 
   /**
    * Person fullName
@@ -80,4 +80,10 @@ export class PersonResponseDto {
    */
   @AutoMap()
   email: string;
+
+  /**
+   * Person state
+   */
+  @AutoMap()
+  state: boolean;
 }
