@@ -1,0 +1,37 @@
+import { AutoMap } from '@automapper/classes';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
+/**
+ * A class representing a gender entity.
+ */
+@Entity({
+  name: 'genders',
+})
+export class Genders {
+  /**
+   * Gender id
+   */
+  @PrimaryGeneratedColumn()
+  @AutoMap()
+  id: number;
+
+  /**
+   * Gender name
+   */
+  @Column({
+    type: 'varchar',
+    length: 20,
+  })
+  @AutoMap()
+  name: string;
+
+  /**
+   * Gender description
+   */
+  @Column({
+    type: 'varchar',
+    length: 50,
+  })
+  @AutoMap()
+  description: string;
+}
