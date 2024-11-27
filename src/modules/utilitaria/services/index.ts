@@ -7,6 +7,10 @@ import { IDENTIFICATION_TYPE_USE_CASES } from './useCases/identificationType';
 import { STATE_USE_CASES } from './useCases/state/index';
 import { TypeCompanyProfile } from './profiles/typeCompany/typeCompany.profile';
 import { TYPE_COMPANY_USE_CASES } from './useCases/typeCompany/index';
+import { CitiesProfile } from './profiles/cities/cities.profile';
+import { GendersProfile } from './profiles/genders/genders.profile';
+import { GENDERS_USE_CASES } from './useCases/genders';
+import { CITIES_USE_CASES } from './useCases/cities';
 
 /**
  * An array of use cases for the example module.
@@ -16,6 +20,8 @@ export const UTILITARIA_USE_CASES = [
   ...IDENTIFICATION_TYPE_USE_CASES,
   ...STATE_USE_CASES,
   ...TYPE_COMPANY_USE_CASES,
+  ...GENDERS_USE_CASES,
+  ...CITIES_USE_CASES,
 ];
 
 /**
@@ -26,4 +32,6 @@ export const UTILITARIA_PROFILES = [
   StateProfile,
   IdentificationTypeProfile,
   TypeCompanyProfile,
+  CitiesProfile,
+  GendersProfile,
 ];
