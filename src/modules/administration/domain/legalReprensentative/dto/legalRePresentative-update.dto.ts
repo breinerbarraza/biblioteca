@@ -67,12 +67,12 @@ export class LegalRepresentativeUpdateDto {
   middleName: string;
 
   /**
-   * LegalRepresentative firstSurName
+   * LegalRepresentative firstSurname
    */
   @IsString()
   @AutoMap()
   @IsOptional()
-  firstSurName: string;
+  firstSurname: string;
 
   /**
    * LegalRepresentative secondLastName
@@ -80,7 +80,7 @@ export class LegalRepresentativeUpdateDto {
   @IsString()
   @AutoMap()
   @IsOptional()
-  secondLastName: string;
+  secondSurname: string;
 
   /**
    * LegalRepresentative fullName
