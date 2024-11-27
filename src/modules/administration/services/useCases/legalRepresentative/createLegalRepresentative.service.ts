@@ -29,18 +29,19 @@ export class CreateLegalRepresentative {
    */
 
   async handle(
-    legalReprensentativeRequestDto: LegalRepresentativeRequestDto,
+    legalRepresentativeRequestDto: LegalRepresentativeRequestDto,
   ): Promise<LegalRepresentativeResponseDto> {
-    const legalReprensentativePayload = this._mapper.map(
-      legalReprensentativeRequestDto,
+    const legalRepresentativePayload = this._mapper.map(
+      legalRepresentativeRequestDto,
       LegalRepresentativeRequestDto,
       LegalRepresentative,
     );
 
     const legalRepresentative =
-      await this._legalRepresentativeRepository.create(
-        legalReprensentativePayload,
-      );
+      await this._legalRepresentativeRepository.create({
+        ...legalRepresentativePayload,
+        fullName: `${legalRepresentativePayload?.name} ${legalRepresentativePayload?.middleName} ${legalRepresentativePayload?.firstSurname} ${legalRepresentativePayload?.secondSurname}`,
+      });
     const response = this._mapper.map(
       legalRepresentative,
       LegalRepresentative,
