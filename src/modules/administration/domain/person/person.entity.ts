@@ -100,16 +100,6 @@ export class Person {
   middleLastName: string;
 
   /**
-   * Company fullName
-   */
-  @Column({
-    type: 'varchar',
-    nullable: true,
-  })
-  @AutoMap()
-  fullName: string;
-
-  /**
    * Person dateBirth
    */
   @Column({

@@ -30,6 +30,7 @@ export class UserRequestDto extends PersonRequestDto {
    * User password
    */
   @IsString()
+  @IsOptional()
   @AutoMap()
   password: string;
 
