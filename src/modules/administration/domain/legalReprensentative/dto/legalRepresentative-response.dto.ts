@@ -52,17 +52,17 @@ export class LegalRepresentativeResponseDto {
   middleName: string;
 
   /**
-   * LegalRepresentative firstSurName
+   * LegalRepresentative firstSurname
    */
   @AutoMap()
-  firstSurName: string;
+  firstSurname: string;
 
   /**
    * LegalRepresentative secondLastName
    */
 
   @AutoMap()
-  secondLastName: string;
+  secondSurname: string;
 
   /**
    * LegalRepresentative fullName

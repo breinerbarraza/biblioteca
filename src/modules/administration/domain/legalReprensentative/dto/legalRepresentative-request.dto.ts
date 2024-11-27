@@ -61,19 +61,19 @@ export class LegalRepresentativeRequestDto {
   middleName: string;
 
   /**
-   * LegalRepresentative firstSurName
+   * LegalRepresentative firstSurname
    */
   @IsString()
   @IsString()
   @AutoMap()
-  firstSurName: string;
+  firstSurname: string;
 
   /**
    * LegalRepresentative secondLastName
    */
   @IsString()
   @AutoMap()
-  secondLastName: string;
+  secondSurname: string;
 
   /**
    * LegalRepresentative fullName

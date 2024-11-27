@@ -5,6 +5,7 @@ import { CompanyRepository } from '@app/modules/administration/infrastructure/pe
 import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
 import { Injectable } from '@nestjs/common';
+import { CreateLegalRepresentative } from '@app/modules/administration/services/useCases/legalRepresentative/createLegalRepresentative.service';
 
 /**
  * Service class for creating a new company.
@@ -19,6 +20,7 @@ export class CreateCompany {
   constructor(
     @InjectMapper() private readonly _mapper: Mapper,
     private readonly _companyRepository: CompanyRepository,
+    private readonly _legalRepresentativeService: CreateLegalRepresentative,
   ) {}
 
   /**
@@ -36,7 +38,18 @@ export class CreateCompany {
       CompanyRequestDto,
       Company,
     );
-    const company = await this._companyRepository.create(companyPayload);
+    const company = await this._companyRepository.create({
+      ...companyPayload,
+      fullName:
+        companyPayload?.idTypeCompany === 1
+          ? companyPayload?.companyName
+          : `${companyPayload?.name} ${companyPayload?.middleName} ${companyPayload?.firstSurname} ${companyPayload?.secondSurname}`,
+    });
+
+    await this._legalRepresentativeService.handle({
+      ...companyRequestDto?.legalRepresentative,
+      idCompany: company.id,
+    });
 
     const response = this._mapper.map(company, Company, CompanyResponseDto);
 

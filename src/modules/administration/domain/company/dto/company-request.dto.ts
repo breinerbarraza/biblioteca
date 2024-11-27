@@ -1,5 +1,12 @@
+import { LegalRepresentativeRequestDto } from '@app/modules/administration/domain/legalReprensentative/dto/legalRepresentative-request.dto';
 import { AutoMap } from '@automapper/classes';
-import { IsEmail, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsEmail,
+  IsNumber,
+  IsObject,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 /**
  * A class representing a company request dto.
@@ -125,4 +132,11 @@ export class CompanyRequestDto {
   @IsString()
   @AutoMap()
   fullAddress: string;
+
+  /**
+   * Company legalRepresentative
+   */
+  @IsObject()
+  @AutoMap()
+  legalRepresentative: LegalRepresentativeRequestDto;
 }
