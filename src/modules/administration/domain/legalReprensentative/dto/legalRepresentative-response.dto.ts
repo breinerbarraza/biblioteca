@@ -45,12 +45,6 @@ export class LegalRepresentativeResponseDto {
   name: string;
 
   /**
-   * LegalRepresentative firstName
-   */
-  @AutoMap()
-  firstName: string;
-
-  /**
    * LegalRepresentative middle_name
    */
 
@@ -58,10 +52,10 @@ export class LegalRepresentativeResponseDto {
   middleName: string;
 
   /**
-   * LegalRepresentative lastName
+   * LegalRepresentative firstSurName
    */
   @AutoMap()
-  lastName: string;
+  firstSurName: string;
 
   /**
    * LegalRepresentative secondLastName
