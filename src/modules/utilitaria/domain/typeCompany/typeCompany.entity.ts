@@ -1,24 +1,23 @@
 import { Company } from '@app/modules/administration/domain/company/company.entity';
-import { LegalRepresentative } from '@app/modules/administration/domain/legalReprensentative/legalRepresentative.entity';
 import { AutoMap } from '@automapper/classes';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
- * A class representing a State entity.
+ * A class representing a typeCompany entity.
  */
 @Entity({
-  name: 'states',
+  name: 'typeCompanies',
 })
-export class State {
+export class TypeCompany {
   /**
-   * State id
+   * TypeCompany id
    */
   @PrimaryGeneratedColumn()
   @AutoMap()
   id: number;
 
   /**
-   * State name
+   * TypeCompany name
    */
   @Column({
     type: 'varchar',
@@ -28,7 +27,7 @@ export class State {
   name: string;
 
   /**
-   * State description
+   * TypeCompany description
    */
   @Column({
     type: 'varchar',
@@ -40,14 +39,8 @@ export class State {
   // Relation
 
   /**
-   * company
+   * companies
    */
-  @OneToMany(() => Company, (person) => person.state)
+  @OneToMany(() => Company, (x) => x.typeCompany)
   companies?: Company[];
-
-  /**
-   * LegalRepresentative
-   */
-  @OneToMany(() => LegalRepresentative, (x) => x?.state)
-  legalRepresentative?: LegalRepresentative[];
 }

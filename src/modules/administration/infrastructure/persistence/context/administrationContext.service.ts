@@ -1,5 +1,6 @@
 import { Company } from '@app/modules/administration/domain/company/company.entity';
 import { LegalRepresentative } from '@app/modules/administration/domain/legalReprensentative/legalRepresentative.entity';
+import { CompanyPerson } from '@app/modules/administration/domain/companyPerson/companyPerson.entity';
 import { Person } from '@app/modules/administration/domain/person/person.entity';
 import { AbstractRepository } from '@app/modules/database/classes/abstractRepository';
 import { GenericRepository } from '@app/modules/database/classes/genericRepository';
@@ -15,6 +16,7 @@ export class AdministrationContext {
   person: AbstractRepository<Person>;
   company: AbstractRepository<Company>;
   legalRepresentative: AbstractRepository<LegalRepresentative>;
+  companyPerson: AbstractRepository<CompanyPerson>;
 
   constructor(
     @InjectDataSource('main') private readonly dataSource: DataSource,
@@ -37,6 +39,11 @@ export class AdministrationContext {
     );
     this.legalRepresentative = new GenericRepository<LegalRepresentative>(
       LegalRepresentative,
+      this.dataSource,
+      this.request,
+    );
+    this.companyPerson = new GenericRepository<CompanyPerson>(
+      CompanyPerson,
       this.dataSource,
       this.request,
     );

@@ -30,6 +30,14 @@ export class CompanyUpdateDto {
   identificationNumber: number;
 
   /**
+   * Company idTypeCompany
+   */
+  @IsNumber()
+  @IsOptional()
+  @AutoMap()
+  idTypeCompany: number;
+
+  /**
    * Company dv
    */
   @IsString()
@@ -38,12 +46,28 @@ export class CompanyUpdateDto {
   dv: string;
 
   /**
-   * Company business_name
+   * Company businessName
    */
   @IsString()
   @IsOptional()
   @AutoMap()
-  business_name: string;
+  businessName: string;
+
+  /**
+   * Company companyName
+   */
+  @IsString()
+  @IsOptional()
+  @AutoMap()
+  companyName: string;
+
+  /**
+   * Company webPage
+   */
+  @IsString()
+  @IsOptional()
+  @AutoMap()
+  webPage: string;
 
   /**
    * Company name
