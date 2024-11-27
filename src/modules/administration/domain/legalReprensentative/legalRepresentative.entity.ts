@@ -68,16 +68,6 @@ export class LegalRepresentative {
   name: string;
 
   /**
-   * LegalRepresentative firstName
-   */
-  @Column({
-    type: 'varchar',
-    length: 50,
-  })
-  @AutoMap()
-  firstName: string;
-
-  /**
    * LegalRepresentative middle_name
    */
   @Column({
@@ -89,15 +79,14 @@ export class LegalRepresentative {
   middleName: string;
 
   /**
-   * LegalRepresentative lastName
+   * LegalRepresentative firstSurName
    */
   @Column({
     type: 'varchar',
     length: 50,
-    nullable: true,
   })
   @AutoMap()
-  lastName: string;
+  firstSurName: string;
 
   /**
    * LegalRepresentative secondLastName

@@ -11,14 +11,6 @@ export class LegalRepresentativeUpdateDto {
   id?: number;
 
   /**
-   * LegalRepresentative idState
-   */
-  @IsNumber()
-  @AutoMap()
-  @IsOptional()
-  idState: number;
-
-  /**
    * LegalRepresentative idGender
    */
   @IsNumber()
@@ -61,20 +53,10 @@ export class LegalRepresentativeUpdateDto {
   /**
    * LegalRepresentative name
    */
-  @IsNumber()
   @IsString()
   @AutoMap()
   @IsOptional()
   name: string;
-
-  /**
-   * LegalRepresentative firstName
-   */
-  @IsNumber()
-  @IsString()
-  @AutoMap()
-  @IsOptional()
-  firstName: string;
 
   /**
    * LegalRepresentative middle_name
@@ -85,12 +67,12 @@ export class LegalRepresentativeUpdateDto {
   middleName: string;
 
   /**
-   * LegalRepresentative lastName
+   * LegalRepresentative firstSurName
    */
   @IsString()
   @AutoMap()
   @IsOptional()
-  lastName: string;
+  firstSurName: string;
 
   /**
    * LegalRepresentative secondLastName

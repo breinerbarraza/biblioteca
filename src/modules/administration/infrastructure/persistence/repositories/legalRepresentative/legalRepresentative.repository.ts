@@ -123,7 +123,11 @@ export class LegalRepresentativeRepository {
   ): Promise<LegalRepresentative> {
     try {
       const DeleteLegalRepresentative =
-        await this._context.legalRepresentative.delete(criteria);
+        await this._context.legalRepresentative.update(criteria, {
+          ...criteria,
+          state: false,
+        });
+
       return { ...DeleteLegalRepresentative?.raw[0] };
     } catch (error) {
       throw new HttpException(
