@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 import { PersonController } from './controllers/person/person.controller';
 import { CompanyController } from './controllers/company/company.controller';
+import { LegalRepresentativeController } from './controllers/legalRepresentative/legalRepresentative.controller';
 import { CompanyPersonController } from './controllers/companyPerson/companyPerson.controller';
 
 /**
@@ -9,5 +10,6 @@ import { CompanyPersonController } from './controllers/companyPerson/companyPers
 export const ADMINISTRATION_CONTROLLERS = [
   PersonController,
   CompanyController,
+  LegalRepresentativeController,
   CompanyPersonController,
 ];

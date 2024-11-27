@@ -3,6 +3,8 @@ import { PERSON_USE_CASES } from './useCases/person';
 import { PersonProfile } from './profiles/person/person.profile';
 import { COMPANY_USE_CASES } from './useCases/company/index';
 import { CompanyProfile } from './profiles/company/company.profile';
+import { LegalRepresentativeProfile } from './profiles/legalRepresentative/legalRepresentative.profile';
+import { LEGALREPRESENTATIVE_USE_CASES } from './useCases/legalRepresentative';
 import { COMPANY_PERSON_USE_CASES } from './useCases/companyPerson';
 import { CompanyPersonProfile } from './profiles/companyPerson/companyPerson.profile';
 
@@ -12,6 +14,7 @@ import { CompanyPersonProfile } from './profiles/companyPerson/companyPerson.pro
 export const ADMINISTRATION_USE_CASES = [
   ...PERSON_USE_CASES,
   ...COMPANY_USE_CASES,
+  ...LEGALREPRESENTATIVE_USE_CASES,
   ...COMPANY_PERSON_USE_CASES,
 ];
 
@@ -21,5 +24,6 @@ export const ADMINISTRATION_USE_CASES = [
 export const ADMINISTRATION_PROFILES = [
   PersonProfile,
   CompanyProfile,
+  LegalRepresentativeProfile,
   CompanyPersonProfile,
 ];
