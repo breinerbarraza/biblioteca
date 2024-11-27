@@ -10,6 +10,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { CompanyPerson } from '../companyPerson/companyPerson.entity';
+import { TypeCompany } from '@app/modules/utilitaria/domain/typeCompany/typeCompany.entity';
 
 /**
  * A class representing a company entity.
@@ -47,6 +48,13 @@ export class Company {
   identificationNumber: number;
 
   /**
+   * Company idTypeCompany
+   */
+  @Column()
+  @AutoMap()
+  idTypeCompany: number;
+
+  /**
    * Company dv
    */
   @Column({
@@ -57,7 +65,7 @@ export class Company {
   dv: string;
 
   /**
-   * Company business_name
+   * Company businessName
    */
   @Column({
     type: 'varchar',
@@ -65,7 +73,29 @@ export class Company {
     nullable: true,
   })
   @AutoMap()
-  business_name: string;
+  businessName: string;
+
+  /**
+   * Company companyName
+   */
+  @Column({
+    type: 'varchar',
+    length: 50,
+    nullable: true,
+  })
+  @AutoMap()
+  companyName: string;
+
+  /**
+   * Company name
+   */
+  @Column({
+    type: 'varchar',
+    length: 250,
+    nullable: true,
+  })
+  @AutoMap()
+  webPage: string;
 
   /**
    * Company name
@@ -116,7 +146,6 @@ export class Company {
    */
   @Column({
     type: 'varchar',
-    nullable: true,
   })
   @AutoMap()
   fullName: string;
@@ -169,6 +198,15 @@ export class Company {
     name: 'idIdentificationType',
   })
   identificationType?: IdentificationType;
+
+  /**
+   * typeCompany
+   */
+  @ManyToOne(() => TypeCompany, (x) => x.companies)
+  @JoinColumn({
+    name: 'idTypeCompany',
+  })
+  typeCompany?: TypeCompany;
 
   /**
    * companyPerson

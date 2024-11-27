@@ -5,6 +5,8 @@ import { StateProfile } from './profiles/state/state.profile';
 import { CARGO_USE_CASES } from './useCases/cargo';
 import { IDENTIFICATION_TYPE_USE_CASES } from './useCases/identificationType';
 import { STATE_USE_CASES } from './useCases/state/index';
+import { TypeCompanyProfile } from './profiles/typeCompany/typeCompany.profile';
+import { TYPE_COMPANY_USE_CASES } from './useCases/typeCompany/index';
 
 /**
  * An array of use cases for the example module.
@@ -13,6 +15,7 @@ export const UTILITARIA_USE_CASES = [
   ...CARGO_USE_CASES,
   ...IDENTIFICATION_TYPE_USE_CASES,
   ...STATE_USE_CASES,
+  ...TYPE_COMPANY_USE_CASES,
 ];
 
 /**
@@ -22,4 +25,5 @@ export const UTILITARIA_PROFILES = [
   CargoProfile,
   StateProfile,
   IdentificationTypeProfile,
+  TypeCompanyProfile,
 ];
