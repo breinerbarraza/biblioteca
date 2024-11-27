@@ -29,22 +29,40 @@ export class CompanyResponseDto {
   identificationNumber: number;
 
   /**
+   * Company idTypeCompany
+   */
+  @AutoMap()
+  idTypeCompany: number;
+
+  /**
    * Company dv
    */
   @AutoMap()
   dv: string;
 
   /**
-   * Company business_name
+   * Company businessName
    */
   @AutoMap()
-  business_name: string;
+  businessName: string;
 
   /**
-   * Company Name
+   * Company companyName
    */
   @AutoMap()
-  Name: string;
+  companyName: string;
+
+  /**
+   * Company webPage
+   */
+  @AutoMap()
+  webPage: string;
+
+  /**
+   * Company name
+   */
+  @AutoMap()
+  name: string;
 
   /**
    * Company middleName
