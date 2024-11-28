@@ -25,7 +25,10 @@ export class FindAllCompany {
    * @returns A promise that resolves to an array of CompanyResponseDto objects.
    */
   async handle(): Promise<CompanyResponseDto[]> {
-    const companies = await this._companyRepository.getAll();
+    const companies = await this._companyRepository.getAll({
+      order: { id: 'ASC' },
+      relations: { identificationType: true, typeCompany: true, state: true },
+    });
 
     const response = this._mapper.mapArray(
       companies,

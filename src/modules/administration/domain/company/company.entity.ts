@@ -1,5 +1,7 @@
+import { LegalRepresentative } from '@app/modules/administration/domain/legalReprensentative/legalRepresentative.entity';
 import { IdentificationType } from '@app/modules/utilitaria/domain/identificationType/identificationType.entity';
 import { State } from '@app/modules/utilitaria/domain/state/state.entity';
+import { TypeCompany } from '@app/modules/utilitaria/domain/typeCompany/typeCompany.entity';
 import { AutoMap } from '@automapper/classes';
 import {
   Column,
@@ -7,10 +9,10 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { CompanyPerson } from '../companyPerson/companyPerson.entity';
-import { TypeCompany } from '@app/modules/utilitaria/domain/typeCompany/typeCompany.entity';
 
 /**
  * A class representing a company entity.
@@ -211,6 +213,12 @@ export class Company {
   /**
    * companyPerson
    */
-  @OneToMany(() => CompanyPerson, (companyPerson) => companyPerson.company)
+  @OneToMany(() => CompanyPerson, (x) => x.company)
   companyPerson?: CompanyPerson[];
+
+  /**
+   * legalRepresentative
+   */
+  @OneToOne(() => LegalRepresentative, (x) => x.company)
+  legalRepresentative?: LegalRepresentative;
 }

@@ -32,7 +32,6 @@ export class CreateCompany {
   async handle(
     companyRequestDto: CompanyRequestDto,
   ): Promise<CompanyResponseDto> {
-    console.log(companyRequestDto, '❤️❤️❤️');
     const companyPayload = this._mapper.map(
       companyRequestDto,
       CompanyRequestDto,

@@ -1,3 +1,4 @@
+import { Company } from '@app/modules/administration/domain/company/company.entity';
 import { IdentificationType } from '@app/modules/utilitaria/domain/identificationType/identificationType.entity';
 import { AutoMap } from '@automapper/classes';
 import {
@@ -5,6 +6,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -150,4 +152,13 @@ export class LegalRepresentative {
     name: 'idIdentificationType',
   })
   identificationType?: IdentificationType;
+
+  /**
+   * company
+   */
+  @OneToOne(() => Company, (x) => x?.legalRepresentative)
+  @JoinColumn({
+    name: 'idCompany',
+  })
+  company?: Company;
 }
