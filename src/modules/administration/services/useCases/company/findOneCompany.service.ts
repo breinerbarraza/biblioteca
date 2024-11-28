@@ -29,6 +29,7 @@ export class FindOneCompany {
   async handle(id: number): Promise<CompanyResponseDto> {
     const company = await this._companyRepository.findBy({
       where: { id },
+      relations: { legalRepresentative: true },
     });
 
     const response = this._mapper.map(company, Company, CompanyResponseDto);

@@ -1,5 +1,6 @@
+import { LegalRepresentative } from '@app/modules/administration/domain/legalReprensentative/legalRepresentative.entity';
 import { AutoMap } from '@automapper/classes';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
  * A class representing a cities entity.
@@ -34,4 +35,10 @@ export class Cities {
   })
   @AutoMap()
   codigo: string;
+
+  /**
+   * legalRepresentative
+   */
+  @OneToMany(() => LegalRepresentative, (x) => x?.cities)
+  legalRepresentatives?: LegalRepresentative[];
 }
