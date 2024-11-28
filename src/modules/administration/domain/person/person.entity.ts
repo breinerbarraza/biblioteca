@@ -8,6 +8,7 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { CompanyPerson } from '../companyPerson/companyPerson.entity';
@@ -161,7 +162,7 @@ export class Person {
   /**
    * user
    */
-  @ManyToOne(() => User, (x) => x.persons)
+  @OneToOne(() => User, (x) => x.persons)
   @JoinColumn({
     name: 'idUser',
   })

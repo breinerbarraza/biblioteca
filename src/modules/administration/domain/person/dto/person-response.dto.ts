@@ -1,4 +1,5 @@
 import { AutoMap } from '@automapper/classes';
+import { CompanyPersonResponseDto } from '../../companyPerson/dto/companyPerson-response.dto';
 
 /**
  * A class representing a person response dto.
@@ -80,4 +81,10 @@ export class PersonResponseDto {
    */
   @AutoMap()
   state: boolean;
+
+  /**
+   * Person companyPerson
+   */
+  @AutoMap()
+  companyPerson?: CompanyPersonResponseDto[];
 }

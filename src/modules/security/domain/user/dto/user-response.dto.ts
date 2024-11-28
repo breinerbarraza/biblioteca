@@ -1,3 +1,4 @@
+import { PersonResponseDto } from '@app/modules/administration/domain/person/dto/person-response.dto';
 import { AutoMap } from '@automapper/classes';
 
 /**
@@ -39,4 +40,10 @@ export class UserResponseDto {
    */
   @AutoMap()
   failedAttempts: number;
+
+  /**
+   * User persons
+   */
+  @AutoMap()
+  persons?: PersonResponseDto;
 }

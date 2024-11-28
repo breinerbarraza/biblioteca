@@ -25,7 +25,9 @@ export class FindAllUser {
    * @returns A promise that resolves to an array of UserResponseDto objects.
    */
   async handle(): Promise<UserResponseDto[]> {
-    const users = await this._userRepository.getAll();
+    const users = await this._userRepository.getAll({
+      relations: { persons: { companyPerson: { company: true }, cargo: true } },
+    });
 
     const response = this._mapper.mapArray(users, User, UserResponseDto);
 

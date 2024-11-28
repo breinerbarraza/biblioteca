@@ -57,4 +57,12 @@ export class UserRequestDto extends PersonRequestDto {
   @IsOptional()
   @AutoMap()
   idCompany?: number;
+
+  /**
+   * User idRol
+   */
+  @IsNumber()
+  @IsOptional()
+  @AutoMap()
+  idRol?: number;
 }
