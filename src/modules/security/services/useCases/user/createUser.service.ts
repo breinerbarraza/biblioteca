@@ -61,6 +61,7 @@ export class CreateUser {
         middleName: userRequestDto?.middleName,
         firstLastName: userRequestDto?.firstLastName,
         middleLastName: userRequestDto?.middleLastName,
+        fullName: `${userRequestDto?.firstName} ${userRequestDto?.middleName} ${userRequestDto?.firstLastName} ${userRequestDto?.middleLastName}`,
         dateBirth: userRequestDto?.dateBirth,
         phone: userRequestDto?.phone,
         email: userRequestDto?.email,

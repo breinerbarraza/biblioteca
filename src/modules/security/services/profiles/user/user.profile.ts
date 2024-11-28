@@ -34,6 +34,10 @@ export class UserProfile extends AutomapperProfile {
           (destination) => destination.persons,
           mapFrom((source) => source.persons),
         ),
+        forMember(
+          (destination) => destination.userRole,
+          mapFrom((source) => source.userRole),
+        ),
       );
       createMap(mapper, UserRequestDto, User);
       createMap(mapper, UserUpdateDto, User);

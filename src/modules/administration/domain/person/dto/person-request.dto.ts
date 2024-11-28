@@ -71,6 +71,14 @@ export class PersonRequestDto {
   middleLastName: string;
 
   /**
+   * Person fullName
+   */
+  @IsString()
+  @IsOptional()
+  @AutoMap()
+  fullName: string;
+
+  /**
    * Person dateBirth
    */
   @IsDateString()

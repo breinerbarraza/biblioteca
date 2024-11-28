@@ -101,6 +101,17 @@ export class Person {
   middleLastName: string;
 
   /**
+   * Person fullName
+   */
+  @Column({
+    type: 'varchar',
+    length: 250,
+    nullable: false,
+  })
+  @AutoMap()
+  fullName: string;
+
+  /**
    * Person dateBirth
    */
   @Column({
