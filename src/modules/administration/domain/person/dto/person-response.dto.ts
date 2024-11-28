@@ -58,12 +58,6 @@ export class PersonResponseDto {
   middleLastName: string;
 
   /**
-   * Person fullName
-   */
-  @AutoMap()
-  fullName: string;
-
-  /**
    * Person dateBirth
    */
   @AutoMap()

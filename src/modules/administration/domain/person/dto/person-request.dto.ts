@@ -29,6 +29,7 @@ export class PersonRequestDto {
    * Person idUser
    */
   @IsNumber()
+  @IsOptional()
   @AutoMap()
   idUser: number;
 
@@ -68,14 +69,6 @@ export class PersonRequestDto {
   @IsOptional()
   @AutoMap()
   middleLastName: string;
-
-  /**
-   * Person fullName
-   */
-  @IsString()
-  @IsOptional()
-  @AutoMap()
-  fullName: string;
 
   /**
    * Person dateBirth

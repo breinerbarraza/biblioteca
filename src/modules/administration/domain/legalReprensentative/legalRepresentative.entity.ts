@@ -1,4 +1,6 @@
 import { Company } from '@app/modules/administration/domain/company/company.entity';
+import { Cities } from '@app/modules/utilitaria/domain/cities/cities.entity';
+import { Genders } from '@app/modules/utilitaria/domain/genders/genders.entity';
 import { IdentificationType } from '@app/modules/utilitaria/domain/identificationType/identificationType.entity';
 import { AutoMap } from '@automapper/classes';
 import {
@@ -161,4 +163,22 @@ export class LegalRepresentative {
     name: 'idCompany',
   })
   company?: Company;
+
+  /**
+   * Cities
+   */
+  @ManyToOne(() => Cities, (x) => x?.legalRepresentatives)
+  @JoinColumn({
+    name: 'idCities',
+  })
+  cities?: Cities;
+
+  /**
+   * identificationType
+   */
+  @ManyToOne(() => Genders, (x) => x?.legalRepresentatives)
+  @JoinColumn({
+    name: 'idGenders',
+  })
+  genders?: Genders;
 }

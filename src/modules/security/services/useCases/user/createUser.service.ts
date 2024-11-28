@@ -1,5 +1,6 @@
 import { CompanyPersonRepository } from '@app/modules/administration/infrastructure/persistence/repositories/companyPerson/companyPerson.repository';
 import { PersonRepository } from '@app/modules/administration/infrastructure/persistence/repositories/person/person.repository';
+import { EmailAdapter } from '@app/modules/common/adapters/email/emailAdapter.service';
 import { UserRequestDto } from '@app/modules/security/domain/user/dto/user-request.dto';
 import { UserResponseDto } from '@app/modules/security/domain/user/dto/user-response.dto';
 import { User } from '@app/modules/security/domain/user/user.entity';
@@ -24,6 +25,7 @@ export class CreateUser {
     private readonly _userRepository: UserRepository,
     private readonly _personRepository: PersonRepository,
     private readonly _companyPersonRepository: CompanyPersonRepository,
+    private readonly _emailAdapter: EmailAdapter,
   ) {}
 
   /**
@@ -33,10 +35,9 @@ export class CreateUser {
    * @returns The response containing the created user.
    */
   async handle(userRequestDto: UserRequestDto): Promise<UserResponseDto> {
-    console.log(111, userRequestDto);
     const userPayload = this._mapper.map(userRequestDto, UserRequestDto, User);
 
-    const password = await bcrypt.hash(userPayload?.password, 10);
+    const password = await bcrypt.hash(userRequestDto?.documentNumber, 10);
 
     const user = await this._userRepository.create({
       id: undefined,
@@ -58,11 +59,17 @@ export class CreateUser {
         middleName: userRequestDto?.middleName,
         firstLastName: userRequestDto?.firstLastName,
         middleLastName: userRequestDto?.middleLastName,
-        fullName: userRequestDto?.fullName,
         dateBirth: userRequestDto?.dateBirth,
         phone: userRequestDto?.phone,
         email: userRequestDto?.email,
         state: undefined,
+      });
+
+      await this._emailAdapter.sendEmail({
+        from: 'Aris - Contraseña de acceso <contactoaris00@gmail.com>',
+        subject: 'Aris - Contraseña de acceso',
+        to: userRequestDto?.email?.toLocaleLowerCase(),
+        html: '<p>Tu contraseña de acceso es tu número de identificación</p>',
       });
 
       if (person?.id) {
@@ -73,7 +80,6 @@ export class CreateUser {
         });
       }
     }
-    console.log(222, user);
 
     const response = this._mapper.map(user, User, UserResponseDto);
 
