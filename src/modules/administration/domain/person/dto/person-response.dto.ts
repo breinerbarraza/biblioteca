@@ -1,4 +1,6 @@
 import { AutoMap } from '@automapper/classes';
+import { CompanyPersonResponseDto } from '../../companyPerson/dto/companyPerson-response.dto';
+import { IdentificationTypeResponseDto } from '@app/modules/utilitaria/domain/identificationType/dto/identificationType-response.dto';
 
 /**
  * A class representing a person response dto.
@@ -58,6 +60,12 @@ export class PersonResponseDto {
   middleLastName: string;
 
   /**
+   * Person fullName
+   */
+  @AutoMap()
+  fullName: string;
+
+  /**
    * Person dateBirth
    */
   @AutoMap()
@@ -80,4 +88,16 @@ export class PersonResponseDto {
    */
   @AutoMap()
   state: boolean;
+
+  /**
+   * Person companyPerson
+   */
+  @AutoMap()
+  companyPerson?: CompanyPersonResponseDto[];
+
+  /**
+   * Person identificationType
+   */
+  @AutoMap()
+  identificationType?: IdentificationTypeResponseDto;
 }

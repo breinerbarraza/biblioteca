@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import { AutomapperProfile, InjectMapper } from '@automapper/nestjs';
-import { createMap, type Mapper } from '@automapper/core';
+import { createMap, forMember, mapFrom, type Mapper } from '@automapper/core';
 import { Injectable } from '@nestjs/common';
 import { User } from '@app/modules/security/domain/user/user.entity';
 import { UserResponseDto } from '@app/modules/security/domain/user/dto/user-response.dto';
@@ -26,7 +26,19 @@ export class UserProfile extends AutomapperProfile {
    */
   override get profile() {
     return (mapper) => {
-      createMap(mapper, User, UserResponseDto);
+      createMap(
+        mapper,
+        User,
+        UserResponseDto,
+        forMember(
+          (destination) => destination.persons,
+          mapFrom((source) => source.persons),
+        ),
+        forMember(
+          (destination) => destination.userRole,
+          mapFrom((source) => source.userRole),
+        ),
+      );
       createMap(mapper, UserRequestDto, User);
       createMap(mapper, UserUpdateDto, User);
     };
