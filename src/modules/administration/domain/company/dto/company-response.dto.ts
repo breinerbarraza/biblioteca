@@ -1,3 +1,7 @@
+import { LegalRepresentativeResponseDto } from '@app/modules/administration/domain/legalReprensentative/dto/legalRepresentative-response.dto';
+import { IdentificationTypeResponseDto } from '@app/modules/utilitaria/domain/identificationType/dto/identificationType-response.dto';
+import { StateResponseDto } from '@app/modules/utilitaria/domain/state/dto/state-response.dto';
+import { TypeCompanyResponseDto } from '@app/modules/utilitaria/domain/typeCompany/dto/typeCompany-response.dto';
 import { AutoMap } from '@automapper/classes';
 
 /**
@@ -101,8 +105,32 @@ export class CompanyResponseDto {
   email: string;
 
   /**
-   * Company email
+   * Company fullAddress
    */
   @AutoMap()
   fullAddress: string;
+
+  /**
+   * Company legalRepresentative
+   */
+  @AutoMap()
+  legalRepresentative?: LegalRepresentativeResponseDto;
+
+  /**
+   * Company typeCompany
+   */
+  @AutoMap()
+  typeCompany?: TypeCompanyResponseDto;
+
+  /**
+   * Company identificationType
+   */
+  @AutoMap()
+  identificationType?: IdentificationTypeResponseDto;
+
+  /**
+   * Company state
+   */
+  @AutoMap()
+  state?: StateResponseDto;
 }

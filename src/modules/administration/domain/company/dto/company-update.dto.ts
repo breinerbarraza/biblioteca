@@ -1,5 +1,12 @@
+import { LegalRepresentativeUpdateDto } from '@app/modules/administration/domain/legalReprensentative/dto/legalRePresentative-update.dto';
 import { AutoMap } from '@automapper/classes';
-import { IsEmail, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsEmail,
+  IsNumber,
+  IsObject,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 /**
  * A class representing a todo update dto.
@@ -125,10 +132,18 @@ export class CompanyUpdateDto {
   email: string;
 
   /**
-   * Company email
+   * Company fullAddress
    */
   @IsString()
   @IsOptional()
   @AutoMap()
   fullAddress: string;
+
+  /**
+   * Company legalRepresentative
+   */
+  @IsObject()
+  @IsOptional()
+  @AutoMap()
+  legalRepresentative: LegalRepresentativeUpdateDto;
 }

@@ -44,17 +44,17 @@ export class UpdateLegalRepresentative {
       );
     }
 
-    const legalReprensentativePayload = this._mapper.map(
+    const legalRepresentativePayload = this._mapper.map(
       legalRepresentativeUpdateDto,
       LegalRepresentativeUpdateDto,
       LegalRepresentative,
     );
 
     const legalRepresentative =
-      await this._legalRepresentativeRepository.update(
-        id,
-        legalReprensentativePayload,
-      );
+      await this._legalRepresentativeRepository.update(id, {
+        ...legalRepresentativePayload,
+        fullName: `${legalRepresentativePayload?.name} ${legalRepresentativePayload?.middleName} ${legalRepresentativePayload?.firstSurname} ${legalRepresentativePayload?.secondSurname}`,
+      });
 
     const response = this._mapper.map(
       legalRepresentative,
