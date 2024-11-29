@@ -50,11 +50,10 @@ export class EmailRecoveryPassword {
       { expiresIn: '10m' },
     );
 
-    console.log(email);
     await this._emailAdapter.sendEmail({
-      from: 'Miconta - Recuperación de Contraseña <aris@gmail.com>',
-      subject: 'Miconta - Recuperación de Contraseña',
-      to: 'barrazabreiner22@gmail.com',
+      from: 'Aris - Recuperación de Contraseña <aris@gmail.com>',
+      subject: 'Aris - Recuperación de Contraseña',
+      to: 'josedavidcalvopolo@gmail.com',
       html: await this._emailLink.email({
         url: `${user?.id}/${token}`,
         name: user?.userName,
@@ -62,7 +61,7 @@ export class EmailRecoveryPassword {
           'Hemos recibido una solicitud para <b>restablecer la contraseña</b> de tu cuenta en nuestro sitio web. Para proceder con el restablecimiento de tu contraseña, por favor sigue el enlace proporcionado a continuación:',
         buttonText: 'Restablecer Contraseña',
         page: 'recoverPassword',
-        logo: 'logo/miConta.png',
+        logo: 'logo/aris.png',
       }),
     });
 
