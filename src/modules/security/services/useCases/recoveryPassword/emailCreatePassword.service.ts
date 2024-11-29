@@ -51,8 +51,8 @@ export class EmailCreatePassword {
     );
 
     await this._emailAdapter.sendEmail({
-      from: 'Miconta - Creación de Contraseña <miconta914@gmail.com>',
-      subject: 'Miconta - Creación de Contraseña',
+      from: 'Aris - Creación de Contraseña <aris914@gmail.com>',
+      subject: 'Aris - Creación de Contraseña',
       to: email?.toLocaleLowerCase(),
       html: await this._emailLink.email({
         url: `${user?.id}/${token}`,
@@ -61,7 +61,7 @@ export class EmailCreatePassword {
           'Hemos recibido una solicitud para <b>crear la contraseña</b> de tu cuenta en nuestro sitio web. Para proceder con la creación de tu contraseña, por favor sigue el enlace proporcionado a continuación:',
         buttonText: 'Crear Contraseña',
         page: 'newPassword',
-        logo: await this._file.getFileUrlS3('logo/miConta.png'),
+        logo: await this._file.getFileUrlS3('logo/aris.png'),
       }),
     });
 
