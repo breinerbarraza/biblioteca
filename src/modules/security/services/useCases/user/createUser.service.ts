@@ -48,6 +48,7 @@ export class CreateUser {
       password,
       state: undefined,
       failedAttempts: 0,
+      token: undefined,
     });
 
     if (user?.id) {
