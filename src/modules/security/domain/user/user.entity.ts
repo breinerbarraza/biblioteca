@@ -8,6 +8,7 @@ import {
   CreateDateColumn,
   Entity,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -122,6 +123,6 @@ export class User {
   /**
    * persons
    */
-  @OneToMany(() => Person, (x) => x?.user)
-  persons?: Person[];
+  @OneToOne(() => Person, (x) => x?.user)
+  persons?: Person;
 }

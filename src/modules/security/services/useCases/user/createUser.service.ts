@@ -5,6 +5,7 @@ import { UserRequestDto } from '@app/modules/security/domain/user/dto/user-reque
 import { UserResponseDto } from '@app/modules/security/domain/user/dto/user-response.dto';
 import { User } from '@app/modules/security/domain/user/user.entity';
 import { UserRepository } from '@app/modules/security/infrastructure/persistence/repositories/user/user.repository';
+import { UserRoleRepository } from '@app/modules/security/infrastructure/persistence/repositories/userRole/userRole.repository';
 import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
 import { Injectable } from '@nestjs/common';
@@ -24,6 +25,7 @@ export class CreateUser {
     @InjectMapper() private readonly _mapper: Mapper,
     private readonly _userRepository: UserRepository,
     private readonly _personRepository: PersonRepository,
+    private readonly _userRoleRepository: UserRoleRepository,
     private readonly _companyPersonRepository: CompanyPersonRepository,
     private readonly _emailAdapter: EmailAdapter,
   ) {}
@@ -60,10 +62,18 @@ export class CreateUser {
         middleName: userRequestDto?.middleName,
         firstLastName: userRequestDto?.firstLastName,
         middleLastName: userRequestDto?.middleLastName,
+        fullName: `${userRequestDto?.firstName} ${userRequestDto?.middleName} ${userRequestDto?.firstLastName} ${userRequestDto?.middleLastName}`,
         dateBirth: userRequestDto?.dateBirth,
         phone: userRequestDto?.phone,
         email: userRequestDto?.email,
         state: undefined,
+      });
+
+      await this._userRoleRepository.create({
+        id: undefined,
+        idUser: user?.id,
+        idRole: userRequestDto?.idRol,
+        assignDate: undefined,
       });
 
       await this._emailAdapter.sendEmail({

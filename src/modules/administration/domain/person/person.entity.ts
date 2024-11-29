@@ -8,6 +8,7 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { CompanyPerson } from '../companyPerson/companyPerson.entity';
@@ -100,6 +101,17 @@ export class Person {
   middleLastName: string;
 
   /**
+   * Person fullName
+   */
+  @Column({
+    type: 'varchar',
+    length: 250,
+    nullable: false,
+  })
+  @AutoMap()
+  fullName: string;
+
+  /**
    * Person dateBirth
    */
   @Column({
@@ -161,7 +173,7 @@ export class Person {
   /**
    * user
    */
-  @ManyToOne(() => User, (x) => x.persons)
+  @OneToOne(() => User, (x) => x.persons)
   @JoinColumn({
     name: 'idUser',
   })

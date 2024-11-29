@@ -1,4 +1,6 @@
+import { PersonResponseDto } from '@app/modules/administration/domain/person/dto/person-response.dto';
 import { AutoMap } from '@automapper/classes';
+import { UserRoleResponseDto } from '../../userRole/dto/userRole-response.dto';
 
 /**
  * A class representing a user response dto.
@@ -39,4 +41,16 @@ export class UserResponseDto {
    */
   @AutoMap()
   failedAttempts: number;
+
+  /**
+   * User persons
+   */
+  @AutoMap()
+  persons?: PersonResponseDto;
+
+  /**
+   * User userRole
+   */
+  @AutoMap()
+  userRole?: UserRoleResponseDto[];
 }
