@@ -66,6 +66,16 @@ export class User {
   failedAttempts: number;
 
   /**
+   * User token
+   */
+  @Column({
+    type: 'varchar',
+    nullable: true,
+  })
+  @AutoMap()
+  token: string;
+
+  /**
    * User state
    */
   @Column({
