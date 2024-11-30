@@ -53,7 +53,7 @@ export class EmailRecoveryPassword {
     await this._emailAdapter.sendEmail({
       from: 'Aris - Recuperación de Contraseña <aris@gmail.com>',
       subject: 'Aris - Recuperación de Contraseña',
-      to: 'josedavidcalvopolo@gmail.com',
+      to: user?.email,
       html: await this._emailLink.email({
         url: `${user?.id}/${token}`,
         name: user?.userName,
