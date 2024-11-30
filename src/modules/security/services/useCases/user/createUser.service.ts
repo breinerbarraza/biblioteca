@@ -1,6 +1,7 @@
 import { CompanyPersonRepository } from '@app/modules/administration/infrastructure/persistence/repositories/companyPerson/companyPerson.repository';
 import { PersonRepository } from '@app/modules/administration/infrastructure/persistence/repositories/person/person.repository';
 import { EmailAdapter } from '@app/modules/common/adapters/email/emailAdapter.service';
+import { constructorName } from '@app/modules/common/utils';
 import { UserRequestDto } from '@app/modules/security/domain/user/dto/user-request.dto';
 import { UserResponseDto } from '@app/modules/security/domain/user/dto/user-response.dto';
 import { User } from '@app/modules/security/domain/user/user.entity';
@@ -8,7 +9,7 @@ import { UserRepository } from '@app/modules/security/infrastructure/persistence
 import { UserRoleRepository } from '@app/modules/security/infrastructure/persistence/repositories/userRole/userRole.repository';
 import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
 /**
@@ -37,6 +38,17 @@ export class CreateUser {
    * @returns The response containing the created user.
    */
   async handle(userRequestDto: UserRequestDto): Promise<UserResponseDto> {
+    const exist = await this._userRepository.findBy({
+      where: [
+        { persons: { documentNumber: userRequestDto?.documentNumber } },
+        { email: userRequestDto?.email },
+      ],
+    });
+
+    if (exist) {
+      throw new NotFoundException(`Usuario ya registrado.`);
+    }
+
     const userPayload = this._mapper.map(userRequestDto, UserRequestDto, User);
 
     const password = await bcrypt.hash(userRequestDto?.documentNumber, 10);
@@ -61,7 +73,12 @@ export class CreateUser {
         middleName: userRequestDto?.middleName,
         firstLastName: userRequestDto?.firstLastName,
         middleLastName: userRequestDto?.middleLastName,
-        fullName: `${userRequestDto?.firstName} ${userRequestDto?.middleName} ${userRequestDto?.firstLastName} ${userRequestDto?.middleLastName}`,
+        fullName: constructorName([
+          userRequestDto?.firstName,
+          userRequestDto?.middleName,
+          userRequestDto?.firstLastName,
+          userRequestDto?.middleLastName,
+        ]),
         dateBirth: userRequestDto?.dateBirth,
         phone: userRequestDto?.phone,
         email: userRequestDto?.email,
