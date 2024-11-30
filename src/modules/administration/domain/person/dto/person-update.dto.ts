@@ -83,6 +83,14 @@ export class PersonUpdateDto {
   middleLastName: string;
 
   /**
+   * Person fullName
+   */
+  @IsString()
+  @IsOptional()
+  @AutoMap()
+  fullName: string;
+
+  /**
    * Person dateBirth
    */
   @IsDateString()

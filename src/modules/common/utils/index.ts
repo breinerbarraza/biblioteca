@@ -52,3 +52,6 @@ export const getLocalIP = () => {
 
   return localIP || 'No se encontró una IP local';
 };
+
+export const constructorName = (values: string[]) =>
+  values?.filter((x) => !!x)?.join(' ');
