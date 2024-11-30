@@ -169,7 +169,7 @@ export class LegalRepresentative {
    */
   @ManyToOne(() => Cities, (x) => x?.legalRepresentatives)
   @JoinColumn({
-    name: 'idCities',
+    name: 'idCity',
   })
   cities?: Cities;
 
@@ -178,7 +178,7 @@ export class LegalRepresentative {
    */
   @ManyToOne(() => Genders, (x) => x?.legalRepresentatives)
   @JoinColumn({
-    name: 'idGenders',
+    name: 'idGender',
   })
   genders?: Genders;
 }
