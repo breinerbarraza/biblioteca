@@ -32,15 +32,6 @@ export class MenuController {
   ) {}
 
   /**
-   * Get all menu
-   * @returns
-   */
-  @Get()
-  findAll() {
-    return this._findAllMenu.handle();
-  }
-
-  /**
    * Create a new Menu
    * @param createMenuDto
    * @returns
@@ -51,6 +42,14 @@ export class MenuController {
     return this._createMenu.handle(createMenuDto);
   }
 
+  /**
+   * Get all menu
+   * @returns
+   */
+  @Get()
+  findAll() {
+    return this._findAllMenu.handle();
+  }
   /**
    * Get Menu by id
    * @param id
