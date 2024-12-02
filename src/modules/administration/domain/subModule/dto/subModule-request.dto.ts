@@ -1,5 +1,5 @@
 import { AutoMap } from '@automapper/classes';
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 /**
  * A class representing a subModule request.
@@ -10,8 +10,9 @@ export class SubModuleRequestDto {
    * subModule id
    */
   @IsNumber()
+  @IsOptional()
   @AutoMap()
-  id: number;
+  id?: number;
 
   /**
    * idModule

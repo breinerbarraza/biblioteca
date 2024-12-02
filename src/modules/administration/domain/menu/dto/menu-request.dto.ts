@@ -1,5 +1,5 @@
 import { AutoMap } from '@automapper/classes';
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 /**
  * A class representing a menu request.
@@ -9,8 +9,9 @@ export class MenuRequestDto {
    * Menu id
    */
   @IsNumber()
+  @IsOptional()
   @AutoMap()
-  id: number;
+  id?: number;
 
   /**
    * idSubModule
