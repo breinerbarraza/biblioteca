@@ -9,6 +9,9 @@ import { Inject, Injectable } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
 import { Request } from 'express';
 import { DataSource } from 'typeorm';
+import { Menu } from '@app/modules/administration/domain/menu/menu.entity';
+import { Modules } from '@app/modules/administration/domain/modulos/modules.entity';
+import { SubModule } from '@app/modules/administration/domain/subModule/subModule.entity';
 
 @Injectable()
 export class AdministrationContext {
@@ -17,6 +20,9 @@ export class AdministrationContext {
   company: AbstractRepository<Company>;
   legalRepresentative: AbstractRepository<LegalRepresentative>;
   companyPerson: AbstractRepository<CompanyPerson>;
+  menu: AbstractRepository<Menu>;
+  modulo: AbstractRepository<Modules>;
+  subModule: AbstractRepository<SubModule>;
 
   constructor(
     @InjectDataSource('main') private readonly dataSource: DataSource,
@@ -44,6 +50,21 @@ export class AdministrationContext {
     );
     this.companyPerson = new GenericRepository<CompanyPerson>(
       CompanyPerson,
+      this.dataSource,
+      this.request,
+    );
+    this.menu = new GenericRepository<Menu>(
+      Menu,
+      this.dataSource,
+      this.request,
+    );
+    this.modulo = new GenericRepository<Modules>(
+      Modules,
+      this.dataSource,
+      this.request,
+    );
+    this.subModule = new GenericRepository<SubModule>(
+      SubModule,
       this.dataSource,
       this.request,
     );
