@@ -5,7 +5,7 @@ import { DeleteModulo } from '@app/modules/administration/services/useCases/modu
 import { FindAllModule } from '@app/modules/administration/services/useCases/modulos/findAllModulos.service';
 import { FindOneModulo } from '@app/modules/administration/services/useCases/modulos/findOneModulos.service';
 import { UpdateModulo } from '@app/modules/administration/services/useCases/modulos/updateMenu.service';
-import { AuthGuard } from '@app/modules/common/guards/authGuard.guard';
+// import { AuthGuard } from '@app/modules/common/guards/authGuard.guard';
 import { TransactionInterceptor } from '@app/modules/common/interceptors/transaction.interceptor';
 import {
   Body,
@@ -14,7 +14,7 @@ import {
   Param,
   Post,
   Put,
-  UseGuards,
+  // UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -38,7 +38,7 @@ export class ModuloController {
    * @param createModuloDto
    * @returns
    */
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   @ApiBearerAuth()
   @Post()
   @UseInterceptors(TransactionInterceptor)
@@ -50,7 +50,7 @@ export class ModuloController {
    * Get all modulos
    * @returns
    */
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   @ApiBearerAuth()
   @Get()
   gatAll() {

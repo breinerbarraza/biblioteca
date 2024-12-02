@@ -1,5 +1,5 @@
 import { AutoMap } from '@automapper/classes';
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 /**
  * A class representing a module request dto.
@@ -9,8 +9,9 @@ export class ModuleRequestDto {
    * module id
    */
   @IsNumber()
+  @IsOptional()
   @AutoMap()
-  id: number;
+  id?: number;
 
   /**
    * Name
