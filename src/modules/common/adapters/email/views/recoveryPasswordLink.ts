@@ -1,5 +1,4 @@
 import { selectEnvironment } from '@app/modules/common/utils';
-import { FileManager } from '../../fileManager';
 
 type TEmail = {
   url: string;
@@ -7,18 +6,18 @@ type TEmail = {
   buttonText: string;
   description: string;
   logo: string;
-  page?: 'recuperarContraseña' | 'nuevaContraseña';
+  page?: 'recoverPassword' | 'newPassword';
 };
 
 export class RecoveryPasswordLink {
-  constructor(private readonly _fileManager: FileManager) {}
+  constructor() {}
 
   async email({
     buttonText,
     description,
     name,
     url,
-    page = 'recuperarContraseña',
+    page = 'recoverPassword',
     logo = '',
   }: TEmail) {
     return `<!DOCTYPE html>

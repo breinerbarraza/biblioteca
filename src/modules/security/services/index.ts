@@ -9,6 +9,8 @@ import { USER_SESSION_USE_CASES } from '../services/useCases/userSession';
 import { ROLE_USE_CASES } from '../services/useCases/role';
 import { USER_ROLE_USE_CASES } from '../services/useCases/userRole';
 import { LOGIN_ATTEMPT_USE_CASES } from './useCases/loginAttempt/index';
+import { LOGIN_USE_CASES } from './useCases/login/index';
+import { RECOVERY_PASSWORD_USE_CASES } from '@app/modules/security/services/useCases/recoveryPassword';
 
 /**
  * An array of use cases for the security module.
@@ -19,6 +21,8 @@ export const SECURITY_USE_CASES = [
   ...ROLE_USE_CASES,
   ...USER_ROLE_USE_CASES,
   ...LOGIN_ATTEMPT_USE_CASES,
+  ...LOGIN_USE_CASES,
+  ...RECOVERY_PASSWORD_USE_CASES,
 ];
 
 /**

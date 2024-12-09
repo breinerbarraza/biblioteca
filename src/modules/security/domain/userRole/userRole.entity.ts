@@ -47,6 +47,7 @@ export class UserRole {
   @Column({
     type: 'timestamp',
     nullable: true,
+    default: new Date(),
   })
   @AutoMap()
   assignDate: Date;

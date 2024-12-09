@@ -2,8 +2,8 @@ import { Body, Controller, Get, Post, UseInterceptors } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { TransactionInterceptor } from '@app/modules/common/interceptors/transaction.interceptor';
 import { TodoRequestDto } from '@app/modules/example/domain/todo/dto/todo-request.dto';
-import { CreateTodo } from '@app/modules/example/services/todo/createTodo.service';
-import { FindAllTodo } from '@app/modules/example/services/todo/findAllTodo.service';
+import { CreateTodo } from '@app/modules/example/services/useCases/todo/createTodo.service';
+import { FindAllTodo } from '@app/modules/example/services/useCases/todo/findAllTodo.service';
 
 /**
  * Todo controller

@@ -1,3 +1,4 @@
+import { Person } from '@app/modules/administration/domain/person/person.entity';
 import { LoginAttempt } from '@app/modules/security/domain/loginAttempt/loginAttempt.entity';
 import { UserRole } from '@app/modules/security/domain/userRole/userRole.entity';
 import { UserSession } from '@app/modules/security/domain/userSession/userSession.entity';
@@ -7,6 +8,7 @@ import {
   CreateDateColumn,
   Entity,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -50,7 +52,6 @@ export class User {
    */
   @Column({
     type: 'varchar',
-    length: 20,
   })
   @AutoMap()
   password: string;
@@ -63,6 +64,16 @@ export class User {
   })
   @AutoMap()
   failedAttempts: number;
+
+  /**
+   * User token
+   */
+  @Column({
+    type: 'varchar',
+    nullable: true,
+  })
+  @AutoMap()
+  token: string;
 
   /**
    * User state
@@ -108,4 +119,10 @@ export class User {
    */
   @OneToMany(() => LoginAttempt, (x) => x?.user)
   loginAttempts?: LoginAttempt[];
+
+  /**
+   * persons
+   */
+  @OneToOne(() => Person, (x) => x?.user)
+  persons?: Person;
 }

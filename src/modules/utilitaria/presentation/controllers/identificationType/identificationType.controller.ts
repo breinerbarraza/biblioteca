@@ -1,5 +1,5 @@
-import { FindAllIdentificationType } from '@app/modules/utilitaria/services/identificationType/findAllIdentificationType.service';
-import { FindOneIdentificationType } from '@app/modules/utilitaria/services/identificationType/findOneIdentificationType.service';
+import { FindAllIdentificationType } from '@app/modules/utilitaria/services/useCases/identificationType/findAllIdentificationType.service';
+import { FindOneIdentificationType } from '@app/modules/utilitaria/services/useCases/identificationType/findOneIdentificationType.service';
 import { Controller, Get, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 

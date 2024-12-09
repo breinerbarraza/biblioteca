@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { CommonModule } from '@app/modules/common/common.module';
 import { DatabaseModule } from './modules/database/database.module';
-import { ExampleModule } from './modules/example/example.module';
+import { AdministrationModule } from './modules/example/example.module';
 import { SecurityModule } from './modules/security/security.module';
 import { UtilitariaModule } from './modules/utilitaria/utilitaria.module';
+import { ExampleModule } from './modules/administration/administration.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { UtilitariaModule } from './modules/utilitaria/utilitaria.module';
     ExampleModule,
     SecurityModule,
     UtilitariaModule,
+    AdministrationModule,
   ],
   controllers: [],
   providers: [],
