@@ -1,4 +1,8 @@
+import { citiesResponseDto } from '@app/modules/utilitaria/domain/cities/dto/cities-response.dto';
+import { IdentificationTypeResponseDto } from '@app/modules/utilitaria/domain/identificationType/dto/identificationType-response.dto';
 import { AutoMap } from '@automapper/classes';
+import { CompanyResponseDto } from '../../company/dto/company-response.dto';
+import { GenderResponseDto } from '@app/modules/utilitaria/domain/genders/dto/genders-response.dto';
 
 export class LegalRepresentativeResponseDto {
   /**
@@ -87,4 +91,28 @@ export class LegalRepresentativeResponseDto {
    */
   @AutoMap()
   state: boolean;
+
+  /**
+   * LegalRepresentative identificationType
+   */
+  @AutoMap()
+  identificationType?: IdentificationTypeResponseDto;
+
+  /**
+   * LegalRepresentative city
+   */
+  @AutoMap()
+  cities?: citiesResponseDto;
+
+  /**
+   * LegalRepresentative genders
+   */
+  @AutoMap()
+  genders?: GenderResponseDto;
+
+  /**
+   * LegalRepresentative identificationType
+   */
+  @AutoMap()
+  company?: CompanyResponseDto;
 }

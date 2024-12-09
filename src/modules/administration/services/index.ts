@@ -7,6 +7,12 @@ import { LegalRepresentativeProfile } from './profiles/legalRepresentative/legal
 import { LEGALREPRESENTATIVE_USE_CASES } from './useCases/legalRepresentative';
 import { COMPANY_PERSON_USE_CASES } from './useCases/companyPerson';
 import { CompanyPersonProfile } from './profiles/companyPerson/companyPerson.profile';
+import { MENU_USE_CASES } from './useCases/menu';
+import { SUBMODULOS_USE_CASES } from './useCases/subModule';
+import { MODULOS_USE_CASES } from './useCases/modulos';
+import { SubModuleProfile } from './profiles/subModule/subModule.profile';
+import { ModuloProfile } from './profiles/modulos/modulos.profile';
+import { MenuProfile } from './profiles/menu/menu.profile';
 
 /**
  * An array of use cases for the administration module.
@@ -16,6 +22,9 @@ export const ADMINISTRATION_USE_CASES = [
   ...COMPANY_USE_CASES,
   ...LEGALREPRESENTATIVE_USE_CASES,
   ...COMPANY_PERSON_USE_CASES,
+  ...MENU_USE_CASES,
+  ...SUBMODULOS_USE_CASES,
+  ...MODULOS_USE_CASES,
 ];
 
 /**
@@ -26,4 +35,7 @@ export const ADMINISTRATION_PROFILES = [
   CompanyProfile,
   LegalRepresentativeProfile,
   CompanyPersonProfile,
+  SubModuleProfile,
+  ModuloProfile,
+  MenuProfile,
 ];

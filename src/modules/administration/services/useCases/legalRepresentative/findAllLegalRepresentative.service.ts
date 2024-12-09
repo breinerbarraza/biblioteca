@@ -26,7 +26,10 @@ export class FindAllLegalRepresentative {
    */
   async handle(): Promise<LegalRepresentativeResponseDto[]> {
     const legalReprensentative =
-      await this._legalRepresentativeRepository.getAll();
+      await this._legalRepresentativeRepository.getAll({
+        order: { id: 'ASC' },
+        relations: { cities: true, genders: true },
+      });
 
     const response = this._mapper.mapArray(
       legalReprensentative,

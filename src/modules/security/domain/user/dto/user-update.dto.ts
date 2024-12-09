@@ -1,16 +1,17 @@
+import { PersonUpdateDto } from '@app/modules/administration/domain/person/dto/person-update.dto';
 import { AutoMap } from '@automapper/classes';
 import {
+  IsBoolean,
+  IsEmail,
   IsNumber,
   IsOptional,
   IsString,
-  IsEmail,
-  IsBoolean,
 } from 'class-validator';
 
 /**
  * A class representing a user update dto.
  */
-export class UserUpdateDto {
+export class UserUpdateDto extends PersonUpdateDto {
   /**
    * User userName
    */
@@ -51,4 +52,20 @@ export class UserUpdateDto {
   @IsOptional()
   @AutoMap()
   failedAttempts: number;
+
+  /**
+   * User idCompany
+   */
+  @IsNumber()
+  @IsOptional()
+  @AutoMap()
+  idCompany?: number;
+
+  /**
+   * User idRol
+   */
+  @IsNumber()
+  @IsOptional()
+  @AutoMap()
+  idRol?: number;
 }

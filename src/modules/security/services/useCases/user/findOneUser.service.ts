@@ -29,6 +29,14 @@ export class FindOneUser {
   async handle(id: number): Promise<UserResponseDto> {
     const user = await this._userRepository.findBy({
       where: { id },
+      relations: {
+        persons: {
+          companyPerson: { company: true },
+          cargo: true,
+          identificationType: true,
+        },
+        userRole: { role: true },
+      },
     });
 
     const response = this._mapper.map(user, User, UserResponseDto);
