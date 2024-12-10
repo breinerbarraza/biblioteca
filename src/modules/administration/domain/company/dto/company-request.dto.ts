@@ -1,4 +1,4 @@
-import { LegalRepresentativeRequestDto } from '@app/modules/administration/domain/legalReprensentative/dto/legalRepresentative-request.dto';
+import { LegalRepresentativeRequestDto } from '@app/modules/administration/domain/legalRepresentative/dto/legalRepresentative-request.dto';
 import { AutoMap } from '@automapper/classes';
 import {
   IsEmail,

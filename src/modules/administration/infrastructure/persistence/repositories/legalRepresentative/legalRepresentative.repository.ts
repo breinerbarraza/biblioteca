@@ -1,4 +1,4 @@
-import { LegalRepresentative } from '@app/modules/administration/domain/legalReprensentative/legalRepresentative.entity';
+import { LegalRepresentative } from '@app/modules/administration/domain/legalRepresentative/legalRepresentative.entity';
 import { AdministrationContext } from '@app/modules/administration/infrastructure/persistence/context/administrationContext.service';
 import {
   DeleteCriteriaType,

@@ -1,4 +1,4 @@
-import { LegalRepresentative } from '@app/modules/administration/domain/legalReprensentative/legalRepresentative.entity';
+import { LegalRepresentative } from '@app/modules/administration/domain/legalRepresentative/legalRepresentative.entity';
 import { IdentificationType } from '@app/modules/utilitaria/domain/identificationType/identificationType.entity';
 import { State } from '@app/modules/utilitaria/domain/state/state.entity';
 import { TypeCompany } from '@app/modules/utilitaria/domain/typeCompany/typeCompany.entity';

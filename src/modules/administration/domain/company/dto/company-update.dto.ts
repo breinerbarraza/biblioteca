@@ -1,4 +1,4 @@
-import { LegalRepresentativeUpdateDto } from '@app/modules/administration/domain/legalReprensentative/dto/legalRePresentative-update.dto';
+import { LegalRepresentativeUpdateDto } from '@app/modules/administration/domain/legalRepresentative/dto/legalRePresentative-update.dto';
 import { AutoMap } from '@automapper/classes';
 import {
   IsEmail,

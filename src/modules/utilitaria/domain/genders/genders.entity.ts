@@ -1,4 +1,4 @@
-import { LegalRepresentative } from '@app/modules/administration/domain/legalReprensentative/legalRepresentative.entity';
+import { LegalRepresentative } from '@app/modules/administration/domain/legalRepresentative/legalRepresentative.entity';
 import { AutoMap } from '@automapper/classes';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 

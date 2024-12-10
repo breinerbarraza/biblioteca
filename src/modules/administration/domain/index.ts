@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import { Person } from './person/person.entity';
 import { Company } from './company/company.entity';
-import { LegalRepresentative } from './legalReprensentative/legalRepresentative.entity';
+import { LegalRepresentative } from './legalRepresentative/legalRepresentative.entity';
 import { CompanyPerson } from './companyPerson/companyPerson.entity';
 import { Menu } from './menu/menu.entity';
 import { Modules } from './modulos/modules.entity';

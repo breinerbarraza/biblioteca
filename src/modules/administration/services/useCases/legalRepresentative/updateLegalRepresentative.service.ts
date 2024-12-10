@@ -3,9 +3,9 @@ import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { FindOneLegalRepresentative } from './findOneLegalRepresentative.service';
-import { LegalRepresentativeUpdateDto } from '@app/modules/administration/domain/legalReprensentative/dto/legalRePresentative-update.dto';
-import { LegalRepresentativeResponseDto } from '@app/modules/administration/domain/legalReprensentative/dto/legalRepresentative-response.dto';
-import { LegalRepresentative } from '@app/modules/administration/domain/legalReprensentative/legalRepresentative.entity';
+import { LegalRepresentativeUpdateDto } from '@app/modules/administration/domain/legalRepresentative/dto/legalRePresentative-update.dto';
+import { LegalRepresentativeResponseDto } from '@app/modules/administration/domain/legalRepresentative/dto/legalRepresentative-response.dto';
+import { LegalRepresentative } from '@app/modules/administration/domain/legalRepresentative/legalRepresentative.entity';
 
 /**
  * Service class for updating a legalRepresentative.

@@ -1,5 +1,5 @@
-import { LegalRepresentativeRequestDto } from '@app/modules/administration/domain/legalReprensentative/dto/legalRepresentative-request.dto';
-import { LegalRepresentativeUpdateDto } from '@app/modules/administration/domain/legalReprensentative/dto/legalRePresentative-update.dto';
+import { LegalRepresentativeRequestDto } from '@app/modules/administration/domain/legalRepresentative/dto/legalRepresentative-request.dto';
+import { LegalRepresentativeUpdateDto } from '@app/modules/administration/domain/legalRepresentative/dto/legalRePresentative-update.dto';
 import { CreateLegalRepresentative } from '@app/modules/administration/services/useCases/legalRepresentative/createLegalRepresentative.service';
 import { DeleteLegalRepresentative } from '@app/modules/administration/services/useCases/legalRepresentative/deleteLegalRepresentatice.service';
 import { FindAllLegalRepresentative } from '@app/modules/administration/services/useCases/legalRepresentative/findAllLegalRepresentative.service';
