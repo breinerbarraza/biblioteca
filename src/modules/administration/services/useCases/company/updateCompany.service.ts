@@ -6,6 +6,7 @@ import { Company } from '@app/modules/administration/domain/company/company.enti
 import { CompanyRepository } from '@app/modules/administration/infrastructure/persistence/repositories/company/company.repository';
 import { CompanyUpdateDto } from '@app/modules/administration/domain/company/dto/company-update.dto';
 import { FindOneCompany } from '@app/modules/administration/services/useCases/company/findOneCompany.service';
+import { UpdateLegalRepresentative } from '@app/modules/administration/services/useCases/legalRepresentative/updateLegalRepresentative.service';
 
 /**
  * Service class for updating a company.
@@ -22,6 +23,7 @@ export class UpdateCompany {
     @InjectMapper() private readonly _mapper: Mapper,
     private readonly _companyRepository: CompanyRepository,
     private readonly _findOneCompany: FindOneCompany,
+    private readonly _updateLegalRepresentative: UpdateLegalRepresentative,
   ) {}
 
   /**
@@ -37,7 +39,7 @@ export class UpdateCompany {
     companyUpdateDto: CompanyUpdateDto,
   ): Promise<CompanyResponseDto> {
     const exist = await this._findOneCompany.handle(id);
-
+    console.log(id, companyUpdateDto, exist);
     if (!exist?.id) {
       throw new NotFoundException(`Company with id ${id} not found`);
     }
@@ -48,9 +50,17 @@ export class UpdateCompany {
       Company,
     );
 
-    const company = await this._companyRepository.update(
-      id,
-      companyUpdatePayload,
+    const company = await this._companyRepository.update(id, {
+      ...companyUpdatePayload,
+      fullName:
+        companyUpdatePayload?.idTypeCompany === 1
+          ? companyUpdatePayload?.companyName
+          : `${companyUpdatePayload?.name} ${companyUpdatePayload?.middleName} ${companyUpdatePayload?.firstSurname} ${companyUpdatePayload?.secondSurname}`,
+    });
+
+    await this._updateLegalRepresentative.handle(
+      companyUpdateDto?.legalRepresentative?.id,
+      companyUpdateDto?.legalRepresentative,
     );
 
     const response = this._mapper.map(company, Company, CompanyResponseDto);

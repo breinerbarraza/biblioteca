@@ -1,15 +1,17 @@
 import { User } from '@app/modules/security/domain/user/user.entity';
 import { Cargo } from '@app/modules/utilitaria/domain/cargo/cargo.entity';
 import { IdentificationType } from '@app/modules/utilitaria/domain/identificationType/identificationType.entity';
-import { State } from '@app/modules/utilitaria/domain/state/state.entity';
 import { AutoMap } from '@automapper/classes';
 import {
   Column,
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { CompanyPerson } from '../companyPerson/companyPerson.entity';
 
 /**
  * A class representing a person entity.
@@ -24,13 +26,6 @@ export class Person {
   @PrimaryGeneratedColumn()
   @AutoMap()
   id: number;
-
-  /**
-   * Person idState
-   */
-  @Column({ default: 1 })
-  @AutoMap()
-  idState: number;
 
   /**
    * Person idIdentificationType
@@ -64,14 +59,14 @@ export class Person {
   documentNumber: string;
 
   /**
-   * Person name
+   * Person firstName
    */
   @Column({
     type: 'varchar',
     length: 20,
   })
   @AutoMap()
-  name: string;
+  firstName: string;
 
   /**
    * Person middleName
@@ -85,17 +80,17 @@ export class Person {
   middleName: string;
 
   /**
-   * Person firstSurname
+   * Person firstLastName
    */
   @Column({
     type: 'varchar',
     length: 20,
   })
   @AutoMap()
-  firstSurname: string;
+  firstLastName: string;
 
   /**
-   * Person secondSurname
+   * Person middleLastName
    */
   @Column({
     type: 'varchar',
@@ -103,14 +98,15 @@ export class Person {
     nullable: true,
   })
   @AutoMap()
-  secondSurname: string;
+  middleLastName: string;
 
   /**
-   * Company fullName
+   * Person fullName
    */
   @Column({
     type: 'varchar',
-    nullable: true,
+    length: 250,
+    nullable: false,
   })
   @AutoMap()
   fullName: string;
@@ -144,16 +140,17 @@ export class Person {
   @AutoMap()
   email: string;
 
-  // Relations
-
   /**
-   * state
+   * User state
    */
-  @ManyToOne(() => State, (x) => x.persons )
-  @JoinColumn({
-    name: 'idState',
+  @Column({
+    type: 'bool',
+    default: true,
   })
-  state?: State;
+  @AutoMap()
+  state: boolean;
+
+  // Relations
 
   /**
    * identificationType
@@ -176,9 +173,15 @@ export class Person {
   /**
    * user
    */
-  @ManyToOne(() => User, (x) => x.persons)
+  @OneToOne(() => User, (x) => x.persons)
   @JoinColumn({
     name: 'idUser',
   })
   user?: User;
+
+  /**
+   * companyPerson
+   */
+  @OneToMany(() => CompanyPerson, (companyPerson) => companyPerson.person)
+  companyPerson?: CompanyPerson[];
 }

@@ -8,6 +8,7 @@ import {
   CreateDateColumn,
   Entity,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -65,6 +66,16 @@ export class User {
   failedAttempts: number;
 
   /**
+   * User token
+   */
+  @Column({
+    type: 'varchar',
+    nullable: true,
+  })
+  @AutoMap()
+  token: string;
+
+  /**
    * User state
    */
   @Column({
@@ -112,6 +123,6 @@ export class User {
   /**
    * persons
    */
-  @OneToMany(() => Person, (x) => x?.user)
-  persons?: Person[];
+  @OneToOne(() => Person, (x) => x?.user)
+  persons?: Person;
 }

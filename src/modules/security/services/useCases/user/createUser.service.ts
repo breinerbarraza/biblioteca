@@ -1,10 +1,17 @@
+import { CompanyPersonRepository } from '@app/modules/administration/infrastructure/persistence/repositories/companyPerson/companyPerson.repository';
+import { PersonRepository } from '@app/modules/administration/infrastructure/persistence/repositories/person/person.repository';
+import { EmailAdapter } from '@app/modules/common/adapters/email/emailAdapter.service';
+import { constructorName } from '@app/modules/common/utils';
 import { UserRequestDto } from '@app/modules/security/domain/user/dto/user-request.dto';
 import { UserResponseDto } from '@app/modules/security/domain/user/dto/user-response.dto';
 import { User } from '@app/modules/security/domain/user/user.entity';
 import { UserRepository } from '@app/modules/security/infrastructure/persistence/repositories/user/user.repository';
+import { UserRoleRepository } from '@app/modules/security/infrastructure/persistence/repositories/userRole/userRole.repository';
 import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
+import PlantillaCodigoDeAcceso from '../mail/templates/templatemailAccess';
 
 /**
  * Service class for creating a new user.
@@ -19,6 +26,10 @@ export class CreateUser {
   constructor(
     @InjectMapper() private readonly _mapper: Mapper,
     private readonly _userRepository: UserRepository,
+    private readonly _personRepository: PersonRepository,
+    private readonly _userRoleRepository: UserRoleRepository,
+    private readonly _companyPersonRepository: CompanyPersonRepository,
+    private readonly _emailAdapter: EmailAdapter,
   ) {}
 
   /**
@@ -28,9 +39,85 @@ export class CreateUser {
    * @returns The response containing the created user.
    */
   async handle(userRequestDto: UserRequestDto): Promise<UserResponseDto> {
+    const exist = await this._userRepository.findBy({
+      where: [
+        { persons: { documentNumber: userRequestDto?.documentNumber } },
+        { email: userRequestDto?.email },
+      ],
+    });
+
+    if (exist) {
+      throw new NotFoundException(`Usuario ya registrado.`);
+    }
+
     const userPayload = this._mapper.map(userRequestDto, UserRequestDto, User);
 
-    const user = await this._userRepository.create(userPayload);
+    const password = await bcrypt.hash(userRequestDto?.documentNumber, 10);
+
+    const user = await this._userRepository.create({
+      id: undefined,
+      userName: userPayload?.userName,
+      email: userPayload?.email,
+      password,
+      state: undefined,
+      failedAttempts: 0,
+      token: undefined,
+    });
+
+    if (user?.id) {
+      const person = await this._personRepository.create({
+        id: undefined,
+        idIdentificationType: userRequestDto?.idIdentificationType,
+        idCargo: userRequestDto?.idCargo,
+        idUser: user?.id,
+        documentNumber: userRequestDto?.documentNumber,
+        firstName: userRequestDto?.firstName,
+        middleName: userRequestDto?.middleName,
+        firstLastName: userRequestDto?.firstLastName,
+        middleLastName: userRequestDto?.middleLastName,
+        fullName: constructorName([
+          userRequestDto?.firstName,
+          userRequestDto?.middleName,
+          userRequestDto?.firstLastName,
+          userRequestDto?.middleLastName,
+        ]),
+        dateBirth: userRequestDto?.dateBirth,
+        phone: userRequestDto?.phone,
+        email: userRequestDto?.email,
+        state: undefined,
+      });
+
+      await this._userRoleRepository.create({
+        id: undefined,
+        idUser: user?.id,
+        idRole: userRequestDto?.idRol,
+        assignDate: undefined,
+      });
+
+      await this._emailAdapter.sendEmail({
+        from: 'Aris <contactoaris00@gmail.com>',
+        subject: 'Bienvenido/a a Aris',
+        attachments: [{
+          filename: 'logo_aris.png',
+          path: './public/assets/images/logo_aris.png',
+          cid: 'logo_aris'
+      }],
+        to: userRequestDto?.email?.toLocaleLowerCase(),
+        html:PlantillaCodigoDeAcceso({
+          documentNumber: person?.documentNumber,
+          email: person?.email,
+          firstName: person?.firstName
+        }),
+      });
+
+      if (person?.id) {
+        await this._companyPersonRepository.create({
+          id: undefined,
+          idCompany: userRequestDto?.idCompany,
+          idPerson: person?.id,
+        });
+      }
+    }
 
     const response = this._mapper.map(user, User, UserResponseDto);
 

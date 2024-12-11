@@ -4,6 +4,7 @@ import { CompanyRepository } from '@app/modules/administration/infrastructure/pe
 import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
 import { Injectable } from '@nestjs/common';
+import { CompanyRequestDto } from '@app/modules/administration/domain/company/dto/company-request.dto';
 
 /**
  * Service class for deleting a company.
@@ -26,10 +27,32 @@ export class DeleteCompany {
    * @param id - The ID of the company item to be deleted.
    * @returns A promise that resolves to a CompanyResponseDto representing the deleted company item.
    */
-  async handle(id: number): Promise<CompanyResponseDto> {
-    const company = await this._companyRepository.delete({
-      id,
-    });
+  async handle(id: number, state: number): Promise<CompanyResponseDto> {
+    const request = this._mapper.map(
+      {
+        idState: state,
+        businessName: undefined,
+        email: undefined,
+        phone: undefined,
+        companyName: undefined,
+        dv: undefined,
+        fullAddress: undefined,
+        firstSurname: undefined,
+        secondSurname: undefined,
+        fullName: undefined,
+        identificationNumber: undefined,
+        idIdentificationType: undefined,
+        idTypeCompany: undefined,
+        legalRepresentative: undefined,
+        name: undefined,
+        middleName: undefined,
+        webPage: undefined,
+      },
+      CompanyRequestDto,
+      Company,
+    );
+
+    const company = await this._companyRepository.update(id, request);
 
     const response = this._mapper.map(company, Company, CompanyResponseDto);
 

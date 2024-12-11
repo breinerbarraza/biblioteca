@@ -29,6 +29,7 @@ export class PersonRequestDto {
    * Person idUser
    */
   @IsNumber()
+  @IsOptional()
   @AutoMap()
   idUser: number;
 
@@ -40,11 +41,11 @@ export class PersonRequestDto {
   documentNumber: string;
 
   /**
-   * Person name
+   * Person firstName
    */
   @IsString()
   @AutoMap()
-  name: string;
+  firstName: string;
 
   /**
    * Person middleName
@@ -55,19 +56,19 @@ export class PersonRequestDto {
   middleName: string;
 
   /**
-   * Person firstSurname
+   * Person firstLastName
    */
   @IsString()
   @AutoMap()
-  firstSurname: string;
+  firstLastName: string;
 
   /**
-   * Person secondSurname
+   * Person middleLastName
    */
   @IsString()
   @IsOptional()
   @AutoMap()
-  secondSurname: string;
+  middleLastName: string;
 
   /**
    * Person fullName

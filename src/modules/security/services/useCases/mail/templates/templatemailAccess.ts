@@ -1,13 +1,13 @@
 export default function PlantillaCodigoDeAcceso({
-    firstName,
-    email,
-    documentNumber
-  }: {
-    firstName: string;
-    email: string;
-    documentNumber: string;
-  }) {
-    return `<!DOCTYPE html>
+  firstName,
+  email,
+  documentNumber
+}: {
+  firstName: string;
+  email: string;
+  documentNumber: string;
+}) {
+  return `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -22,19 +22,10 @@ export default function PlantillaCodigoDeAcceso({
   padding: 0;
 }
 
-.email-container {
-  background-color: #ffffff;
-  width: 30%;
-  max-width: 500px;
-  margin: 30px auto;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
 .header {
   text-align: center;
-  margin-bottom: 20px;
+  width: 100%; 
+  height: 10px;
 }
 
 .logo {
@@ -48,7 +39,7 @@ h1 {
 p, ul {
   font-size: 14px;
   line-height: 1.6;
-  color: #333;
+  color: #272729;
 }
 
 ul {
@@ -57,32 +48,33 @@ ul {
 
 ul li {
   margin-bottom: 5px;
+  color: #272729 !important;
 }
        
 .cont-btn {
   width: 100%;
-  height: 20px; 
+  height: 40px; 
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f5f5f5; 
+  margin-top:5px
 }
 
 .btn {
   display: inline-block;
-  background-color: #03A685;
+  background-color: #03a685;
   color: white;
-   width: 50%;
-   height: 20px;
-  padding: 10px 20px;
+  width: 50%;
+  height: 30px;
   text-decoration: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 12px;
   text-align: center;
+  padding-top:10px;
 }
 
 .btn:hover {
-  background-color: #02385A;
+  background-color: #0389a6;
   text-decoration: none;
 }
 
@@ -94,29 +86,27 @@ a:hover {
   text-decoration: underline;
 }
 
-         </style>
+</style>
 </head>
-<body>
-  <div class="email-container">
-    <div class="header">
-      <img src="logo.png" alt="Logo de Aris" class="logo">
-      <h1>¡Te damos la bienvenida!</h1>
-    </div>
+<body style="margin: 0; background-color: #e9ebec; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none; padding: 5px; height: 100%; width: 95%;">
+    <div style="width: 420px; height: 500px; flex-shrink: 0; padding: 2px 5px 5px 25px; border-radius:10px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background: #FFF; margin: 0 auto">
+    <div style="margin-top: 30px; text-align: center; width:100%; height:auto;">
+     <img src="cid:logo_aris" style="width: 140px; height: 40px; margin-right:9px" />
+     <h1>¡Te damos la bienvenida!</h1>
+      </div>
     <p>Hola <strong>${firstName}</strong>,</p>
     <p>Tu cuenta ha sido creada exitosamente, y puedes acceder con los siguientes datos:</p>
     <ul>
-      <li><strong>Usuario:</strong> ${email}</li>
-      <li><strong>Contraseña temporal:</strong>${documentNumber}</li>
+      <li> <a style="color: #272729;">Usuario: <strong >${email}</strong></a> </li>
+      <li>Contraseña temporal: <strong>${documentNumber}</strong></li>
     </ul>
     <p>Por seguridad, te recomendamos cambiar tu contraseña al iniciar sesión. Accede a la plataforma desde este botón:</p>
       <div class="cont-btn">
-         <a href="#" class="btn">Acceder a la plataforma</a>
+         <a style="margin-left:97px;  text-align: center; color: #FFFFFF;" href="#" class="btn">Acceder a la plataforma</a>
       </div>
-    <p>Si tienes preguntas no dudes en contactarnos: <a href="mailto:ssoporte@aris.com.co">soporte@aris.com.co</a></p>
-    <p>Gracias por ser parte de Aris.</p>
+    <p style="margin-top:15px">Si tienes preguntas no dudes en contactarnos: <a style="color: #272729;" href="mailto:ssoporte@aris.com.co"><strong>soporte@aris.com.co</strong>, Gracias por ser parte de Aris.</a></p>
   </div>
 </body>
 </html>
 `;
-  }
-  
+}

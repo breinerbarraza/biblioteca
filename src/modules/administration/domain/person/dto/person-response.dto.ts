@@ -3,7 +3,7 @@ import { CargoResponseDto } from '@app/modules/utilitaria/domain/cargo/dto/cargo
 import { IdentificationTypeResponseDto } from '@app/modules/utilitaria/domain/identificationType/dto/identificationType-response.dto';
 import { StateResponseDto } from '@app/modules/utilitaria/domain/state/dto/state-response.dto';
 import { AutoMap } from '@automapper/classes';
-import { ApiProperty } from '@nestjs/swagger';
+import { CompanyPersonResponseDto } from '../../companyPerson/dto/companyPerson-response.dto';
 
 /**
  * A class representing a person response dto.
@@ -22,10 +22,10 @@ export class PersonResponseDto {
   documentNumber: string;
 
   /**
-   * Person name
+   * Person firstName
    */
   @AutoMap()
-  name: string;
+  firstName: string;
 
   /**
    * Person middleName
@@ -34,16 +34,16 @@ export class PersonResponseDto {
   middleName: string;
 
   /**
-   * Person firstSurname
+   * Person firstLastName
    */
   @AutoMap()
-  firstSurname: string;
+  firstLastName: string;
 
   /**
-   * Person secondSurname
+   * Person middleLastName
    */
   @AutoMap()
-  secondSurname: string;
+  middleLastName: string;
 
   /**
    * Person fullName
@@ -69,19 +69,21 @@ export class PersonResponseDto {
   @AutoMap()
   email: string;
 
-  @ApiProperty({ type: () => StateResponseDto })
-  @AutoMap(() => StateResponseDto)
-  state: StateResponseDto;
+  /**
+   * Person state
+   */
+  @AutoMap()
+  state: boolean;
 
-  @ApiProperty({ type: () => IdentificationTypeResponseDto })
-  @AutoMap(() => IdentificationTypeResponseDto)
-  identificationType: IdentificationTypeResponseDto;
+  /**
+   * Person companyPerson
+   */
+  @AutoMap()
+  companyPerson?: CompanyPersonResponseDto[];
 
-  @ApiProperty({ type: () => CargoResponseDto })
-  @AutoMap(() => CargoResponseDto)
-  cargo: CargoResponseDto;
-
-  @ApiProperty({ type: () => UserResponseDto })
-  @AutoMap(() => UserResponseDto)
-  user: UserResponseDto;
+  /**
+   * Person identificationType
+   */
+  @AutoMap()
+  identificationType?: IdentificationTypeResponseDto;
 }

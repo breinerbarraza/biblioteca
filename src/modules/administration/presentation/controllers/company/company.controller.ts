@@ -1,7 +1,14 @@
+import { CompanyRequestDto } from '@app/modules/administration/domain/company/dto/company-request.dto';
+import { CompanyUpdateDto } from '@app/modules/administration/domain/company/dto/company-update.dto';
+import { CreateCompany } from '@app/modules/administration/services/useCases/company/createCompany.service';
+import { DeleteCompany } from '@app/modules/administration/services/useCases/company/deleteCompany.service';
+import { FindAllCompany } from '@app/modules/administration/services/useCases/company/findAllCompany.service';
+import { FindOneCompany } from '@app/modules/administration/services/useCases/company/findOneCompany.service';
+import { UpdateCompany } from '@app/modules/administration/services/useCases/company/updateCompany.service';
+import { TransactionInterceptor } from '@app/modules/common/interceptors/transaction.interceptor';
 import {
   Body,
   Controller,
-  Delete,
   Get,
   Param,
   Post,
@@ -9,14 +16,6 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { TransactionInterceptor } from '@app/modules/common/interceptors/transaction.interceptor';
-import { CompanyRequestDto } from '@app/modules/administration/domain/company/dto/company-request.dto';
-import { CompanyUpdateDto } from '@app/modules/administration/domain/company/dto/company-update.dto';
-import { CreateCompany } from '@app/modules/administration/services/useCases/company/createCompany.service';
-import { FindAllCompany } from '@app/modules/administration/services/useCases/company/findAllCompany.service';
-import { FindOneCompany } from '@app/modules/administration/services/useCases/company/findOneCompany.service';
-import { UpdateCompany } from '@app/modules/administration/services/useCases/company/updateCompany.service';
-import { DeleteCompany } from '@app/modules/administration/services/useCases/company/deleteCompany.service';
 
 /**
  * Company controller
@@ -62,6 +61,17 @@ export class CompanyController {
   }
 
   /**
+   * Delete todo
+   * @param id
+   * @returns
+   */
+  @Put('delete')
+  @UseInterceptors(TransactionInterceptor)
+  delete(@Body() request: { id: number; state: number }) {
+    return this._deleteCompany.handle(request?.id, request?.state);
+  }
+
+  /**
    * Update todo
    * @param id
    * @param updateCompanyDto
@@ -71,16 +81,5 @@ export class CompanyController {
   @UseInterceptors(TransactionInterceptor)
   update(@Param('id') id: string, @Body() updateCompanyDto: CompanyUpdateDto) {
     return this._updateCompany.handle(+id, updateCompanyDto);
-  }
-
-  /**
-   * Delete todo
-   * @param id
-   * @returns
-   */
-  @Delete(':id')
-  @UseInterceptors(TransactionInterceptor)
-  delete(@Param('id') id: string) {
-    return this._deleteCompany.handle(+id);
   }
 }

@@ -26,7 +26,14 @@ export class FindAllUser {
    */
   async handle(): Promise<UserResponseDto[]> {
     const users = await this._userRepository.getAll({
-      relations:['userSession', 'userRole', 'loginAttempts', 'persons']
+      relations: {
+        persons: {
+          companyPerson: { company: true },
+          cargo: true,
+          identificationType: true,
+        },
+        userRole: { role: true },
+      },
     });
 
     const response = this._mapper.mapArray(users, User, UserResponseDto);
