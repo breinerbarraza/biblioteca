@@ -12,6 +12,12 @@ export class LoginResponseDto {
   id?: number;
 
   /**
+   * Login idRol
+   */
+  @AutoMap()
+  idRol?: number;
+
+  /**
    * Login token
    */
   @AutoMap()

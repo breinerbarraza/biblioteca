@@ -3,7 +3,8 @@ import { User } from '@app/modules/security/domain/user/user.entity';
 import { UserRepository } from '@app/modules/security/infrastructure/persistence/repositories/user/user.repository';
 import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { Request } from 'express';
 
 /**
  * Service class for finding all users.
@@ -18,6 +19,7 @@ export class FindAllUser {
   constructor(
     @InjectMapper() private readonly _mapper: Mapper,
     private readonly _userRepository: UserRepository,
+    @Inject('REQUEST') private readonly _request: Request,
   ) {}
 
   /**
@@ -25,6 +27,8 @@ export class FindAllUser {
    * @returns A promise that resolves to an array of UserResponseDto objects.
    */
   async handle(): Promise<UserResponseDto[]> {
+    const { idCompany } = await this._request['user'];
+
     const users = await this._userRepository.getAll({
       relations: {
         persons: {
@@ -34,6 +38,7 @@ export class FindAllUser {
         },
         userRole: { role: true },
       },
+      where: { persons: { companyPerson: { idCompany } } },
     });
 
     const response = this._mapper.mapArray(users, User, UserResponseDto);

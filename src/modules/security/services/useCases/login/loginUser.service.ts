@@ -24,6 +24,7 @@ export class LoginUser {
   async handle(loginRequest: LoginRequestDto): Promise<LoginResponseDto> {
     const exit = await this._userRepository.findBy({
       where: [{ email: loginRequest.email }],
+      relations: { userRole: true, persons: { companyPerson: true } },
     });
 
     if (!exit) {
@@ -38,10 +39,12 @@ export class LoginUser {
     const payload = {
       correo: exit?.email,
       id: exit?.id,
+      idCompany: exit?.persons?.companyPerson[0]?.idCompany,
     };
 
     return {
       id: exit?.id,
+      idRol: exit?.userRole[0]?.idRole,
       message: 'Login exitoso',
       token: this.jwt.sign(payload, {
         expiresIn: '4h',

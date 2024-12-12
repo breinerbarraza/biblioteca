@@ -22,9 +22,11 @@ export class RefreshToken {
         },
       );
     }
+
     const payload = {
       correo: user?.email,
       id: user?.id,
+      idCompany: user?.idCompany,
     };
 
     return {

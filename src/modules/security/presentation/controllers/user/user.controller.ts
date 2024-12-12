@@ -1,3 +1,4 @@
+import { AuthGuard } from '@app/modules/common/guards/authGuard.guard';
 import { TransactionInterceptor } from '@app/modules/common/interceptors/transaction.interceptor';
 import { UserRequestDto } from '@app/modules/security/domain/user/dto/user-request.dto';
 import { UserUpdateDto } from '@app/modules/security/domain/user/dto/user-update.dto';
@@ -13,6 +14,7 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
@@ -46,6 +48,7 @@ export class UserController {
    * Get all users
    * @returns
    */
+  @UseGuards(AuthGuard)
   @Get()
   findAll() {
     return this._findAllUser.handle();
