@@ -12,9 +12,8 @@ export class ModuleResponseDto {
   id: number;
 
   /**
-   * Name
+   * name
    */
-
   @AutoMap()
   name: string;
 
