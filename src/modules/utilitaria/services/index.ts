@@ -11,6 +11,7 @@ import { CitiesProfile } from './profiles/cities/cities.profile';
 import { GendersProfile } from './profiles/genders/genders.profile';
 import { GENDERS_USE_CASES } from './useCases/genders';
 import { CITIES_USE_CASES } from './useCases/cities';
+import { UPLOAD_USE_CASES } from './useCases/upload';
 
 /**
  * An array of use cases for the example module.
@@ -22,6 +23,7 @@ export const UTILITARIA_USE_CASES = [
   ...TYPE_COMPANY_USE_CASES,
   ...GENDERS_USE_CASES,
   ...CITIES_USE_CASES,
+  ...UPLOAD_USE_CASES,
 ];
 
 /**

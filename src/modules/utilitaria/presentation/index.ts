@@ -5,6 +5,7 @@ import { StateController } from './controllers/state/state.controller';
 import { TypeCompanyController } from './controllers/typeCompany/typeCompany.controller';
 import { GendersController } from './controllers/genders/genders.controller';
 import { CitiesController } from './controllers/cities/cities.controller';
+import { UploadController } from './controllers/upload/upload.controller';
 
 /**
  * An array of controllers for the example module.
@@ -16,4 +17,5 @@ export const UTILITARIA_CONTROLLERS = [
   TypeCompanyController,
   GendersController,
   CitiesController,
+  UploadController,
 ];

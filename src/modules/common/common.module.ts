@@ -8,6 +8,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { FileManager } from './adapters/fileManager';
 import { EmailAdapter } from './adapters/email/emailAdapter.service';
 import { RecoveryPasswordLink } from './adapters/email/views/recoveryPasswordLink';
+import { UploadAdapter } from './adapters/upload/uploadAdapter.service';
 
 /**
  * A module representing the common module.
@@ -27,8 +28,20 @@ import { RecoveryPasswordLink } from './adapters/email/views/recoveryPasswordLin
     }),
   ],
 
-  providers: [HttpAdapter, EmailAdapter, RecoveryPasswordLink, FileManager],
-  exports: [HttpAdapter, EmailAdapter, RecoveryPasswordLink, FileManager],
+  providers: [
+    HttpAdapter,
+    EmailAdapter,
+    UploadAdapter,
+    RecoveryPasswordLink,
+    FileManager,
+  ],
+  exports: [
+    HttpAdapter,
+    EmailAdapter,
+    UploadAdapter,
+    RecoveryPasswordLink,
+    FileManager,
+  ],
 })
 @Global()
 export class CommonModule {}

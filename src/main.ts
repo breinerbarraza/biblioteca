@@ -12,6 +12,7 @@ async function bootstrap() {
   });
 
   app.setGlobalPrefix('api');
+  app.useBodyParser('json', { limit: '50mb' });
 
   app.useGlobalPipes(
     new ValidationPipe({
