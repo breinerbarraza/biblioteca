@@ -29,6 +29,7 @@ export class FindAllModule {
       order: {
         id: 'ASC',
       },
+      relations: { subModules: { menu: true } },
     });
 
     const response = this._mapper.mapArray(modules, Modules, ModuleResponseDto);
