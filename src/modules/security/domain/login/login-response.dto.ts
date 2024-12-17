@@ -40,4 +40,16 @@ export class LoginResponseDto {
    */
   @AutoMap()
   error: boolean;
+
+  /**
+   * Login userName
+   */
+  @AutoMap()
+  userName?: string;
+
+  /**
+   * Login email
+   */
+  @AutoMap()
+  email?: string;
 }

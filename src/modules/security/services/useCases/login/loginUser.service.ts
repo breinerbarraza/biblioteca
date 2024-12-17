@@ -45,6 +45,8 @@ export class LoginUser {
     return {
       id: exit?.id,
       idRol: exit?.userRole[0]?.idRole,
+      userName: exit?.userName,
+      email: exit?.email,
       message: 'Login exitoso',
       token: this.jwt.sign(payload, {
         expiresIn: '4h',
