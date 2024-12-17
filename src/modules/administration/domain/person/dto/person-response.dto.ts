@@ -1,7 +1,4 @@
-import { UserResponseDto } from '@app/modules/security/domain/user/dto/user-response.dto';
-import { CargoResponseDto } from '@app/modules/utilitaria/domain/cargo/dto/cargo-response.dto';
 import { IdentificationTypeResponseDto } from '@app/modules/utilitaria/domain/identificationType/dto/identificationType-response.dto';
-import { StateResponseDto } from '@app/modules/utilitaria/domain/state/dto/state-response.dto';
 import { AutoMap } from '@automapper/classes';
 import { CompanyPersonResponseDto } from '../../companyPerson/dto/companyPerson-response.dto';
 

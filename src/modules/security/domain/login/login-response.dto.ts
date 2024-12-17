@@ -6,6 +6,18 @@ import { AutoMap } from '@automapper/classes';
  */
 export class LoginResponseDto {
   /**
+   * Login id
+   */
+  @AutoMap()
+  id?: number;
+
+  /**
+   * Login idRol
+   */
+  @AutoMap()
+  idRol?: number;
+
+  /**
    * Login token
    */
   @AutoMap()

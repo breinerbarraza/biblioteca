@@ -39,7 +39,7 @@ export class UpdateCompany {
     companyUpdateDto: CompanyUpdateDto,
   ): Promise<CompanyResponseDto> {
     const exist = await this._findOneCompany.handle(id);
-    console.log(id, companyUpdateDto, exist);
+
     if (!exist?.id) {
       throw new NotFoundException(`Company with id ${id} not found`);
     }

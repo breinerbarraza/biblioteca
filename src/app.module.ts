@@ -5,6 +5,7 @@ import { AdministrationModule } from './modules/example/example.module';
 import { SecurityModule } from './modules/security/security.module';
 import { UtilitariaModule } from './modules/utilitaria/utilitaria.module';
 import { ExampleModule } from './modules/administration/administration.module';
+import { libraryModule } from './modules/library/library.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ExampleModule } from './modules/administration/administration.module';
     SecurityModule,
     UtilitariaModule,
     AdministrationModule,
+    libraryModule
   ],
   controllers: [],
   providers: [],
