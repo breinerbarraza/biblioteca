@@ -1,3 +1,5 @@
+import { CompanyResponseDto } from '@app/modules/administration/domain/company/dto/company-response.dto';
+import { PersonResponseDto } from '@app/modules/administration/domain/person/dto/person-response.dto';
 import { AutoMap } from '@automapper/classes';
 
 /**
@@ -27,4 +29,16 @@ export class IdentificationTypeResponseDto {
    */
   @AutoMap()
   code: string;
+
+  // /**
+  //  * IdentificationType persons
+  //  */
+  // @AutoMap(() => PersonResponseDto)
+  // persons?: PersonResponseDto;
+
+  // /**
+  //  * IdentificationType companies
+  //  */
+  // @AutoMap(() => CompanyResponseDto)
+  // companies: CompanyResponseDto;
 }

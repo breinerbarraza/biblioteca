@@ -1,4 +1,7 @@
 import { Person } from '@app/modules/administration/domain/person/person.entity';
+import { Content } from '@app/modules/library/domain/content/content.entity';
+import { LogAccess } from '@app/modules/library/domain/logAccess/logAccess.entity';
+import { Progress } from '@app/modules/library/domain/progress/progress.entity';
 import { LoginAttempt } from '@app/modules/security/domain/loginAttempt/loginAttempt.entity';
 import { UserRole } from '@app/modules/security/domain/userRole/userRole.entity';
 import { UserSession } from '@app/modules/security/domain/userSession/userSession.entity';
@@ -119,6 +122,24 @@ export class User {
    */
   @OneToMany(() => LoginAttempt, (x) => x?.user)
   loginAttempts?: LoginAttempt[];
+
+  /**
+   * content
+   */
+  @OneToMany(() => Content, (x) => x?.user)
+  content?: Content;
+
+  /**
+   * content
+   */
+  @OneToMany(() => Progress, (x) => x?.user)
+  progress?: Progress;
+
+  /**
+   * content
+   */
+  @OneToMany(() => LogAccess, (x) => x?.user)
+  logAccess?: LogAccess;
 
   /**
    * persons

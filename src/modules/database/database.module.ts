@@ -6,6 +6,7 @@ import { EXAMPLE_ENTITIES } from '../example/domain/index';
 import { SECURITY_ENTITIES } from '../security/domain/index';
 import { UTILITARIA_ENTITIES } from '../utilitaria/domain/index';
 import { ADMINISTRATION_ENTITIES } from '../administration/domain/index';
+import { LIBRARY_ENTITIES } from '../library/domain';
 
 /**
  * A module representing the database.
@@ -21,9 +22,10 @@ import { ADMINISTRATION_ENTITIES } from '../administration/domain/index';
         ...SECURITY_ENTITIES,
         ...UTILITARIA_ENTITIES,
         ...ADMINISTRATION_ENTITIES,
+        ...LIBRARY_ENTITIES
       ],
       logging: true,
-      synchronize: process.env.NODE_ENV === 'production' ? false : true,
+      //synchronize: process.env.NODE_ENV === 'production' ? false : true,
     }),
   ],
 })

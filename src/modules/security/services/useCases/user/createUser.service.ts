@@ -11,6 +11,7 @@ import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import PlantillaCodigoDeAcceso from '../mail/templates/templatemailAccess';
 
 /**
  * Service class for creating a new user.
@@ -94,10 +95,19 @@ export class CreateUser {
       });
 
       await this._emailAdapter.sendEmail({
-        from: 'Aris - Contraseña de acceso <contactoaris00@gmail.com>',
-        subject: 'Aris - Contraseña de acceso',
+        from: 'Aris <contactoaris00@gmail.com>',
+        subject: 'Bienvenido/a a Aris',
+        attachments: [{
+          filename: 'logo_aris.png',
+          path: './public/assets/images/logo_aris.png',
+          cid: 'logo_aris'
+      }],
         to: userRequestDto?.email?.toLocaleLowerCase(),
-        html: '<p>Tu contraseña de acceso es tu número de identificación</p>',
+        html:PlantillaCodigoDeAcceso({
+          documentNumber: person?.documentNumber,
+          email: person?.email,
+          firstName: person?.firstName
+        }),
       });
 
       if (person?.id) {

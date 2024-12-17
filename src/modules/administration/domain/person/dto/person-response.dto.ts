@@ -1,6 +1,6 @@
+import { IdentificationTypeResponseDto } from '@app/modules/utilitaria/domain/identificationType/dto/identificationType-response.dto';
 import { AutoMap } from '@automapper/classes';
 import { CompanyPersonResponseDto } from '../../companyPerson/dto/companyPerson-response.dto';
-import { IdentificationTypeResponseDto } from '@app/modules/utilitaria/domain/identificationType/dto/identificationType-response.dto';
 
 /**
  * A class representing a person response dto.
@@ -11,23 +11,6 @@ export class PersonResponseDto {
    */
   @AutoMap()
   id: number;
-
-  /**
-   * Person idIdentificationType
-   */
-  @AutoMap()
-  idIdentificationType: number;
-  /**
-   * Person idCargo
-   */
-  @AutoMap()
-  idCargo: number;
-
-  /**
-   * Person idUser
-   */
-  @AutoMap()
-  idUser: number;
 
   /**
    * Person documentNumber
