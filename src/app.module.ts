@@ -15,7 +15,7 @@ import { libraryModule } from './modules/library/library.module';
     SecurityModule,
     UtilitariaModule,
     AdministrationModule,
-    libraryModule
+    libraryModule,
   ],
   controllers: [],
   providers: [],

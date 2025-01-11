@@ -22,10 +22,10 @@ import { LIBRARY_ENTITIES } from '../library/domain';
         ...SECURITY_ENTITIES,
         ...UTILITARIA_ENTITIES,
         ...ADMINISTRATION_ENTITIES,
-        ...LIBRARY_ENTITIES
+        ...LIBRARY_ENTITIES,
       ],
       logging: true,
-      //synchronize: process.env.NODE_ENV === 'production' ? false : true,
+      synchronize: process.env.NODE_ENV === 'production' ? false : true,
     }),
   ],
 })
