@@ -58,7 +58,9 @@ export class Content {
   /**
    * Content idSubModule
    */
-  @Column()
+  @Column({
+    nullable: true,
+  })
   @AutoMap()
   idSubModule: number;
 
