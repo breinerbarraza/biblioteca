@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { Modules } from '../modulos/modules.entity';
 import { Menu } from '../menu/menu.entity';
+import { Content } from '@app/modules/library/domain/content/content.entity';
 
 /**
  * A class representing a subModule entity.
@@ -67,4 +68,10 @@ export class SubModule {
    */
   @OneToMany(() => Menu, (x) => x?.subModule)
   menu?: Menu[];
+
+  /**
+   * content
+   */
+  @OneToMany(() => Content, (x) => x?.subModule)
+  content?: Content[];
 }

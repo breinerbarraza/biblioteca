@@ -8,10 +8,11 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
 } from 'typeorm';
 import { LogAccess } from '../logAccess/logAccess.entity';
 import { Progress } from '../progress/progress.entity';
+import { SubModule } from '@app/modules/administration/domain/subModule/subModule.entity';
 
 /**
  * A class representing a Content entity.
@@ -55,6 +56,13 @@ export class Content {
   idUser: number;
 
   /**
+   * Content idSubModule
+   */
+  @Column()
+  @AutoMap()
+  idSubModule: number;
+
+  /**
    * Content type
    */
   @Column({
@@ -72,12 +80,11 @@ export class Content {
     length: 250,
   })
   @AutoMap()
-
   url: string;
 
   /**
-    * Person uploadDate
-    */
+   * Person uploadDate
+   */
   @Column({
     type: 'date',
   })
@@ -116,6 +123,15 @@ export class Content {
     name: 'idUser',
   })
   user?: User;
+
+  /**
+   * subModule
+   */
+  @ManyToOne(() => SubModule, (x) => x?.content)
+  @JoinColumn({
+    name: 'idSubModule',
+  })
+  subModule?: SubModule;
 
   /**
    * LogAccess
