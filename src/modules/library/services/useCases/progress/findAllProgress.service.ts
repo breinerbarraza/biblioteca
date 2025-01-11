@@ -26,10 +26,14 @@ export class FindAllProgress {
    */
   async handle(): Promise<ProgressResponseDto[]> {
     const progress = await this._contentRepository.getAll({
-      relations: { user: true, content: true }
+      relations: { user: true, contentDetail: true },
     });
 
-    const response = this._mapper.mapArray(progress, Progress, ProgressResponseDto);
+    const response = this._mapper.mapArray(
+      progress,
+      Progress,
+      ProgressResponseDto,
+    );
 
     return response;
   }

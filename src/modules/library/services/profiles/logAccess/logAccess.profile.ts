@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import { Content } from '@app/modules/library/domain/content/content.entity';
-import { ContentResponseDto } from '@app/modules/library/domain/content/dto/content-response.dto';
+import { ContentDetailResponseDto } from '@app/modules/library/domain/contentDetail/dto/contentDetail-response.dto';
 import { LogAccessRequestDto } from '@app/modules/library/domain/logAccess/dto/logAccess-request.dto';
 import { LogAccessResponseDto } from '@app/modules/library/domain/logAccess/dto/logAccess-response.dto';
 import { LogAccessUpdateDto } from '@app/modules/library/domain/logAccess/dto/logAccess-update.dto';
@@ -37,13 +37,15 @@ export class LogAccessProfile extends AutomapperProfile {
         forMember(
           (dest) => dest.user,
           mapFrom((src) =>
-            mapper.map(src.user, User,UserResponseDto, { depth: 1 }),
+            mapper.map(src.user, User, UserResponseDto, { depth: 1 }),
           ),
         ),
         forMember(
           (dest) => dest.content,
           mapFrom((src) =>
-            mapper.map(src.content, Content,ContentResponseDto, { depth: 1 }),
+            mapper.map(src.contentDetail, Content, ContentDetailResponseDto, {
+              depth: 1,
+            }),
           ),
         ),
       );

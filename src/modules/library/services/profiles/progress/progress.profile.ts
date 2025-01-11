@@ -1,6 +1,6 @@
 /* istanbul ignore file */
-import { Content } from '@app/modules/library/domain/content/content.entity';
-import { ContentResponseDto } from '@app/modules/library/domain/content/dto/content-response.dto';
+import { ContentDetail } from '@app/modules/library/domain/contentDetail/contentDetail.entity';
+import { ContentDetailResponseDto } from '@app/modules/library/domain/contentDetail/dto/contentDetail-response.dto';
 import { ProgressRequestDto } from '@app/modules/library/domain/progress/dto/progress-request.dto';
 import { ProgressResponseDto } from '@app/modules/library/domain/progress/dto/progress-response.dto';
 import { ProgressUpdateDto } from '@app/modules/library/domain/progress/dto/progress-update.dto';
@@ -37,13 +37,20 @@ export class ProgressProfile extends AutomapperProfile {
         forMember(
           (dest) => dest.user,
           mapFrom((src) =>
-            mapper.map(src.user, User,UserResponseDto, { depth: 1 }),
+            mapper.map(src.user, User, UserResponseDto, { depth: 1 }),
           ),
         ),
         forMember(
           (dest) => dest.content,
           mapFrom((src) =>
-            mapper.map(src.content, Content,ContentResponseDto, { depth: 1 }),
+            mapper.map(
+              src.contentDetail,
+              ContentDetail,
+              ContentDetailResponseDto,
+              {
+                depth: 1,
+              },
+            ),
           ),
         ),
       );

@@ -2,12 +2,9 @@
 import { Content } from './content/content.entity';
 import { LogAccess } from './logAccess/logAccess.entity';
 import { Progress } from './progress/progress.entity';
+import { ContentDetail } from './contentDetail/contentDetail.entity';
 
 /**
  * An array of entities for the administration module.
  */
-export const LIBRARY_ENTITIES = [
-  Content,
-  LogAccess,
-  Progress
-];
+export const LIBRARY_ENTITIES = [Content, LogAccess, Progress, ContentDetail];

@@ -4,14 +4,14 @@ import { IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 /**
  * A class representing a content request dto.
  */
-export class ContentRequestDto {
+export class ContentDetailRequestDto {
   /**
-   * content idContentDetail
+   * content idUser
    */
   @IsNotEmpty()
   @IsNumber()
   @AutoMap()
-  idContentDetail: number;
+  idUser: number;
 
   /**
    * content title
@@ -28,22 +28,6 @@ export class ContentRequestDto {
   @IsString()
   @AutoMap()
   description: string;
-
-  /**
-   * content type
-   */
-  @IsNotEmpty()
-  @IsString()
-  @AutoMap()
-  type: string;
-
-  /**
-   * content url
-   */
-  @IsNotEmpty()
-  @IsString()
-  @AutoMap()
-  url: string;
 
   /**
    * content uploadDate

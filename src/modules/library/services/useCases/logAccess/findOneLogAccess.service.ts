@@ -29,10 +29,14 @@ export class FindOneLogAccess {
   async handle(id: number): Promise<LogAccessResponseDto> {
     const logAccess = await this._logAccessRepository.findBy({
       where: { id },
-      relations: { user: true, content: true }
+      relations: { user: true, contentDetail: true },
     });
 
-    const response = this._mapper.map(logAccess, LogAccess, LogAccessResponseDto);
+    const response = this._mapper.map(
+      logAccess,
+      LogAccess,
+      LogAccessResponseDto,
+    );
 
     return response;
   }

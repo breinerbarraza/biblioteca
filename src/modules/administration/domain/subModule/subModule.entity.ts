@@ -72,6 +72,6 @@ export class SubModule {
   /**
    * content
    */
-  @OneToMany(() => Content, (x) => x?.subModule)
+  @OneToMany(() => Content, (x) => x?.contentDetail)
   content?: Content[];
 }

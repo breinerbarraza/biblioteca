@@ -4,7 +4,7 @@ import { IsDateString, IsNumber, IsOptional, IsString } from 'class-validator';
 /**
  * A class representing a content update dto.
  */
-export class ContentUpdateDto {
+export class ContentDetailUpdateDto {
   /**
    * Person id
    */
@@ -14,12 +14,12 @@ export class ContentUpdateDto {
   id: number;
 
   /**
-   * Content idContentDetail
+   * Content idUser
    */
   @IsNumber()
   @IsOptional()
   @AutoMap()
-  idContentDetail: number;
+  idUser: number;
 
   /**
    * Content title
@@ -36,22 +36,6 @@ export class ContentUpdateDto {
   @IsString()
   @AutoMap()
   description: string;
-
-  /**
-   * Content type
-   */
-  @IsOptional()
-  @IsString()
-  @AutoMap()
-  type: string;
-
-  /**
-   * Content url
-   */
-  @IsOptional()
-  @IsString()
-  @AutoMap()
-  url: string;
 
   /**
    * Content uploadDate

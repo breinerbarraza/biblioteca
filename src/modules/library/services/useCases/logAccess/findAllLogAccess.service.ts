@@ -26,10 +26,14 @@ export class FindAllLogAccess {
    */
   async handle(): Promise<LogAccessResponseDto[]> {
     const logAccess = await this._contentRepository.getAll({
-      relations: { user: true, content: true }
+      relations: { user: true, contentDetail: true },
     });
 
-    const response = this._mapper.mapArray(logAccess, LogAccess, LogAccessResponseDto);
+    const response = this._mapper.mapArray(
+      logAccess,
+      LogAccess,
+      LogAccessResponseDto,
+    );
 
     return response;
   }

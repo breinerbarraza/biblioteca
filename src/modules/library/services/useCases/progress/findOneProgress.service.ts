@@ -29,7 +29,7 @@ export class FindOneProgress {
   async handle(id: number): Promise<ProgressResponseDto> {
     const progress = await this._progressRepository.findBy({
       where: { id },
-      relations: { user: true, content: true }
+      relations: { user: true, contentDetail: true },
     });
 
     const response = this._mapper.map(progress, Progress, ProgressResponseDto);

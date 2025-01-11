@@ -1,4 +1,4 @@
-import { User } from '@app/modules/security/domain/user/user.entity';
+import { ContentDetail } from '@app/modules/library/domain/contentDetail/contentDetail.entity';
 import { AutoMap } from '@automapper/classes';
 import {
   Column,
@@ -6,13 +6,9 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { LogAccess } from '../logAccess/logAccess.entity';
-import { Progress } from '../progress/progress.entity';
-import { SubModule } from '@app/modules/administration/domain/subModule/subModule.entity';
 
 /**
  * A class representing a Content entity.
@@ -27,6 +23,15 @@ export class Content {
   @PrimaryGeneratedColumn()
   @AutoMap()
   id: number;
+
+  /**
+   * Content idContentDetail
+   */
+  @Column({
+    nullable: true,
+  })
+  @AutoMap()
+  idContentDetail: number;
 
   /**
    * Content title
@@ -47,22 +52,6 @@ export class Content {
   })
   @AutoMap()
   description: string;
-
-  /**
-   * Content idUser
-   */
-  @Column()
-  @AutoMap()
-  idUser: number;
-
-  /**
-   * Content idSubModule
-   */
-  @Column({
-    nullable: true,
-  })
-  @AutoMap()
-  idSubModule: number;
 
   /**
    * Content type
@@ -118,32 +107,11 @@ export class Content {
   updatedAt?: Date;
 
   /**
-   * User
+   * ContentDetail
    */
-  @ManyToOne(() => User, (x) => x?.content)
+  @ManyToOne(() => ContentDetail, (x) => x?.content)
   @JoinColumn({
-    name: 'idUser',
+    name: 'idContentDetail',
   })
-  user?: User;
-
-  /**
-   * subModule
-   */
-  @ManyToOne(() => SubModule, (x) => x?.content)
-  @JoinColumn({
-    name: 'idSubModule',
-  })
-  subModule?: SubModule;
-
-  /**
-   * LogAccess
-   */
-  @OneToMany(() => LogAccess, (x) => x?.content)
-  logAccess?: LogAccess;
-
-  /**
-   * Progress
-   */
-  @OneToMany(() => Progress, (x) => x?.content)
-  progress?: Progress;
+  contentDetail?: ContentDetail;
 }

@@ -1,5 +1,5 @@
 import { Person } from '@app/modules/administration/domain/person/person.entity';
-import { Content } from '@app/modules/library/domain/content/content.entity';
+import { ContentDetail } from '@app/modules/library/domain/contentDetail/contentDetail.entity';
 import { LogAccess } from '@app/modules/library/domain/logAccess/logAccess.entity';
 import { Progress } from '@app/modules/library/domain/progress/progress.entity';
 import { LoginAttempt } from '@app/modules/security/domain/loginAttempt/loginAttempt.entity';
@@ -126,8 +126,8 @@ export class User {
   /**
    * content
    */
-  @OneToMany(() => Content, (x) => x?.user)
-  content?: Content;
+  @OneToMany(() => ContentDetail, (x) => x?.user)
+  contentDetail?: ContentDetail;
 
   /**
    * content

@@ -1,3 +1,4 @@
+import { ContentDetail } from '@app/modules/library/domain/contentDetail/contentDetail.entity';
 import { User } from '@app/modules/security/domain/user/user.entity';
 import { AutoMap } from '@automapper/classes';
 import {
@@ -7,9 +8,8 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
 } from 'typeorm';
-import { Content } from '../content/content.entity';
 
 /**
  * A class representing a Progress entity.
@@ -26,8 +26,8 @@ export class Progress {
   id: number;
 
   /**
-    * Progress dateLastAccess
-    */
+   * Progress dateLastAccess
+   */
   @Column({
     type: 'date',
   })
@@ -42,11 +42,11 @@ export class Progress {
   idUser: number;
 
   /**
-   * Progress idContent
+   * Progress idContentDetail
    */
   @Column()
   @AutoMap()
-  idContent: number;
+  idContentDetail: number;
 
   /**
    * Progress percentage
@@ -56,7 +56,6 @@ export class Progress {
   })
   @AutoMap()
   percentage: number;
-
 
   /**
    * Progress state
@@ -94,9 +93,9 @@ export class Progress {
   /**
    * Progress
    */
-  @ManyToOne(() => Content, (x) => x?.progress)
+  @ManyToOne(() => ContentDetail, (x) => x?.progress)
   @JoinColumn({
-    name: 'idContent',
+    name: 'idContentDetail',
   })
-  content?: Content;
+  contentDetail?: ContentDetail;
 }

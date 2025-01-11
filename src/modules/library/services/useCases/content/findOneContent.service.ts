@@ -29,7 +29,6 @@ export class FindOneContent {
   async handle(id: number): Promise<ContentResponseDto> {
     const content = await this._contentRepository.findBy({
       where: { id },
-      relations: { user: true }
     });
 
     const response = this._mapper.map(content, Content, ContentResponseDto);

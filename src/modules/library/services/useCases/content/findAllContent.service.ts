@@ -25,11 +25,13 @@ export class FindAllContent {
    * @returns A promise that resolves to an array of ContentResponseDto objects.
    */
   async handle(): Promise<ContentResponseDto[]> {
-    const contents = await this._contentRepository.getAll({
-      relations: { user: true }
-    });
+    const contents = await this._contentRepository.getAll();
 
-    const response = this._mapper.mapArray(contents, Content, ContentResponseDto);
+    const response = this._mapper.mapArray(
+      contents,
+      Content,
+      ContentResponseDto,
+    );
 
     return response;
   }

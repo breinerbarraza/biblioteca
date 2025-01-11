@@ -1,3 +1,4 @@
+import { ContentDetail } from '@app/modules/library/domain/contentDetail/contentDetail.entity';
 import { User } from '@app/modules/security/domain/user/user.entity';
 import { AutoMap } from '@automapper/classes';
 import {
@@ -7,9 +8,8 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
 } from 'typeorm';
-import { Content } from '../content/content.entity';
 
 /**
  * A class representing a LogAccess entity.
@@ -26,8 +26,8 @@ export class LogAccess {
   id: number;
 
   /**
-    * LogAccess accessDate
-    */
+   * LogAccess accessDate
+   */
   @Column({
     type: 'date',
   })
@@ -42,12 +42,11 @@ export class LogAccess {
   idUser: number;
 
   /**
-   * LogAccess idContent
+   * LogAccess idContentDetail
    */
   @Column()
   @AutoMap()
-  idContent: number;
-
+  idContentDetail: number;
 
   /**
    * LogAccess state
@@ -85,9 +84,9 @@ export class LogAccess {
   /**
    * LogAccess
    */
-  @ManyToOne(() => Content, (x) => x?.logAccess)
+  @ManyToOne(() => ContentDetail, (x) => x?.logAccess)
   @JoinColumn({
-    name: 'idContent',
+    name: 'idContentDetail',
   })
-  content?: Content;
+  contentDetail?: ContentDetail;
 }
