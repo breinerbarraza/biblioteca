@@ -1,4 +1,5 @@
 import { PersonUpdateDto } from '@app/modules/administration/domain/person/dto/person-update.dto';
+import { UploadRequestDto } from '@app/modules/utilitaria/domain/upload/dto/upload-request.dto';
 import { AutoMap } from '@automapper/classes';
 import {
   IsBoolean,
@@ -38,6 +39,14 @@ export class UserUpdateDto extends PersonUpdateDto {
   password: string;
 
   /**
+   * User urlImage
+   */
+  @IsString()
+  @IsOptional()
+  @AutoMap()
+  urlImage: string;
+
+  /**
    * User state
    */
   @IsBoolean()
@@ -68,4 +77,8 @@ export class UserUpdateDto extends PersonUpdateDto {
   @IsOptional()
   @AutoMap()
   idRol?: number;
+
+  @IsOptional()
+  @AutoMap(() => UploadRequestDto)
+  upload?: UploadRequestDto;
 }

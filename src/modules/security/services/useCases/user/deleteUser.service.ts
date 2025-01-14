@@ -46,6 +46,7 @@ export class DeleteUser {
         fullName: undefined,
         dateBirth: undefined,
         phone: undefined,
+        urlImage: undefined,
       },
       UserRequestDto,
       User,

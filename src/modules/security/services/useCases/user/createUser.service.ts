@@ -62,6 +62,7 @@ export class CreateUser {
       state: undefined,
       failedAttempts: 0,
       token: undefined,
+      urlImage: undefined,
     });
 
     if (user?.id) {
@@ -97,16 +98,18 @@ export class CreateUser {
       await this._emailAdapter.sendEmail({
         from: 'Aris <contactoaris00@gmail.com>',
         subject: 'Bienvenido/a a Aris',
-        attachments: [{
-          filename: 'logo_aris.png',
-          path: './public/assets/images/logo_aris.png',
-          cid: 'logo_aris'
-      }],
+        attachments: [
+          {
+            filename: 'logo_aris.png',
+            path: './public/assets/images/logo_aris.png',
+            cid: 'logo_aris',
+          },
+        ],
         to: userRequestDto?.email?.toLocaleLowerCase(),
-        html:PlantillaCodigoDeAcceso({
+        html: PlantillaCodigoDeAcceso({
           documentNumber: person?.documentNumber,
           email: person?.email,
-          firstName: person?.firstName
+          firstName: person?.firstName,
         }),
       });
 

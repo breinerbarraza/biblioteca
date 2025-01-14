@@ -79,6 +79,16 @@ export class User {
   token: string;
 
   /**
+   * User urlImage
+   */
+  @Column({
+    type: 'varchar',
+    nullable: true,
+  })
+  @AutoMap()
+  urlImage: string;
+
+  /**
    * User state
    */
   @Column({

@@ -88,6 +88,7 @@ export class UserRepository {
         ...updateUser?.generatedMaps[0],
       };
     } catch (error) {
+      console.log(error, '🤖🤖🤖');
       throw new HttpException(
         `Error de DB: ${error?.message}`,
         error?.status || 500,

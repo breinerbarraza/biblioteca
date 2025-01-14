@@ -31,6 +31,12 @@ export class UserResponseDto {
   password: string;
 
   /**
+   * User urlImage
+   */
+  @AutoMap()
+  urlImage: string;
+
+  /**
    * User state
    */
   @AutoMap()

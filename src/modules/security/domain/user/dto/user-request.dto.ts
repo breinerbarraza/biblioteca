@@ -35,6 +35,14 @@ export class UserRequestDto extends PersonRequestDto {
   password: string;
 
   /**
+   * User urlImage
+   */
+  @IsString()
+  @IsOptional()
+  @AutoMap()
+  urlImage: string;
+
+  /**
    * User state
    */
   @IsBoolean()

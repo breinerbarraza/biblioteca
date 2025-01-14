@@ -10,6 +10,7 @@ import { PersonRepository } from '@app/modules/administration/infrastructure/per
 import { UserRoleRepository } from '@app/modules/security/infrastructure/persistence/repositories/userRole/userRole.repository';
 import { CompanyPersonRepository } from '@app/modules/administration/infrastructure/persistence/repositories/companyPerson/companyPerson.repository';
 import { constructorName } from '@app/modules/common/utils';
+import { UploadAdapter } from '@app/modules/common/adapters/upload/uploadAdapter.service';
 
 /**
  * Service class for updating a user.
@@ -29,6 +30,7 @@ export class UpdateUser {
     private readonly _personRepository: PersonRepository,
     private readonly _userRoleRepository: UserRoleRepository,
     private readonly _companyPersonRepository: CompanyPersonRepository,
+    private readonly _uploadAdapter: UploadAdapter,
   ) {}
 
   /**
@@ -44,6 +46,7 @@ export class UpdateUser {
     userUpdateDto: UserUpdateDto,
   ): Promise<UserResponseDto> {
     const exist = await this._findOneUser.handle(id);
+    let uploadResponse = '';
 
     if (!exist?.id) {
       throw new NotFoundException(`Usuario no encontrado`);
@@ -54,6 +57,14 @@ export class UpdateUser {
       UserUpdateDto,
       User,
     );
+    console.log(userUpdateDto, userUpdatePayload, 98989);
+
+    if (userUpdateDto?.upload) {
+      const uploadResult = await this._uploadAdapter.sendUpload(
+        userUpdateDto?.upload,
+      );
+      uploadResponse = uploadResult.url;
+    }
 
     const user = await this._userRepository.update(id, {
       ...userUpdatePayload,
@@ -62,7 +73,9 @@ export class UpdateUser {
       password: exist?.password,
       state: exist?.state,
       failedAttempts: exist?.failedAttempts,
+      urlImage: uploadResponse,
     });
+    console.log(user, '💦💦');
 
     await this._personRepository.update(exist?.persons?.id, {
       id: exist?.persons?.id,
@@ -101,6 +114,7 @@ export class UpdateUser {
         idPerson: exist?.persons?.companyPerson?.[0]?.idPerson,
       },
     );
+    console.log('👻👻👻', uploadResponse);
 
     const response = this._mapper.map(user, User, UserResponseDto);
 
